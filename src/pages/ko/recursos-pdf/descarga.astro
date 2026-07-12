@@ -1,0 +1,91 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="다운로드 준비 완료"
+  description="PDF 다운로드 준비가 끝났어요."
+  path="/ko/recursos-pdf/descarga/"
+  lang="ko"
+  noindex
+>
+  <div class="mx-auto max-w-lg px-4 sm:px-6 py-20 text-center">
+    <div id="state-loading">
+      <p class="text-neutral-400">다운로드를 준비하고 있어요...</p>
+    </div>
+
+    <div id="state-ready" class="hidden">
+      <span class="inline-flex h-14 w-14 items-center justify-center rounded-full bg-accent-100 text-accent-700">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 6 9 17l-5-5" />
+        </svg>
+      </span>
+      <h1 class="font-heading mt-4 text-2xl sm:text-3xl font-800 text-neutral-900">완료! PDF가 준비됐어요</h1>
+      <p class="mt-2 text-neutral-600">
+        <strong id="pdf-title-text"></strong>
+      </p>
+      <p class="mt-1 text-sm text-neutral-500">
+        <span id="pdf-email-text" class="font-600"></span> 주소로 등록됐는지 확인했어요.
+      </p>
+
+      <a
+        id="download-link"
+        href="#"
+        class="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-brand-600 px-8 py-3.5 text-sm font-600 text-white shadow-lg shadow-brand-900/20 transition-colors hover:bg-brand-700"
+      >
+        지금 PDF 다운로드
+      </a>
+
+      <p class="mt-10 text-xs text-neutral-400">
+        버튼이 작동하지 않나요?
+        <a href="https://www.tiktok.com/@ameliachoi00" target="_blank" rel="noopener noreferrer" class="font-600 text-brand-600 hover:text-brand-700">
+          TikTok
+        </a>으로 메시지 주시면 직접 보내드릴게요.
+      </p>
+    </div>
+
+    <div id="state-empty" class="hidden">
+      <h1 class="font-heading text-2xl sm:text-3xl font-800 text-neutral-900">요청 정보를 찾을 수 없어요</h1>
+      <p class="mt-2 text-neutral-600">
+        자료 페이지로 돌아가서 다운로드할 PDF를 다시 선택해주세요.
+      </p>
+      <a
+        href="/ko/recursos-pdf/"
+        class="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-brand-600 px-8 py-3.5 text-sm font-600 text-white shadow-lg shadow-brand-900/20 transition-colors hover:bg-brand-700"
+      >
+        PDF 자료 보기
+      </a>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  // NOTA: sessionStorage aquí es solo un mecanismo temporal para pasar datos entre
+  // páginas en esta demo de UX. No hay ningún envío real de email todavía.
+  const raw = sessionStorage.getItem("pdfDownloadRequest");
+  const loading = document.querySelector<HTMLDivElement>("#state-loading");
+  const ready = document.querySelector<HTMLDivElement>("#state-ready");
+  const empty = document.querySelector<HTMLDivElement>("#state-empty");
+
+  loading?.classList.add("hidden");
+
+  if (raw) {
+    try {
+      const data = JSON.parse(raw) as { title?: string; email?: string; fileUrl?: string };
+      const titleEl = document.querySelector<HTMLElement>("#pdf-title-text");
+      const emailEl = document.querySelector<HTMLElement>("#pdf-email-text");
+      const link = document.querySelector<HTMLAnchorElement>("#download-link");
+
+      if (titleEl) titleEl.textContent = data.title ?? "";
+      if (emailEl) emailEl.textContent = data.email ?? "";
+      if (link && data.fileUrl) link.href = data.fileUrl;
+
+      ready?.classList.remove("hidden");
+      sessionStorage.removeItem("pdfDownloadRequest");
+    } catch {
+      empty?.classList.remove("hidden");
+    }
+  } else {
+    empty?.classList.remove("hidden");
+  }
+</script>

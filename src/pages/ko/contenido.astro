@@ -1,0 +1,51 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AdSlot from "../../components/AdSlot.astro";
+import EmbedCard from "../../components/EmbedCard.astro";
+import { contentItems, contentText } from "../../data/content";
+
+const description =
+  "amelinita의 TikTok, YouTube, Instagram, Spotify를 한곳에서 — 스페인어권을 위한 무료 한국어 콘텐츠.";
+---
+
+<BaseLayout
+  title="한국어 학습 콘텐츠"
+  description={description}
+  path="/ko/contenido/"
+  lang="ko"
+>
+  <section class="bg-neutral-50 py-16 sm:py-20">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 text-center">
+      <span class="inline-block rounded-full bg-accent-100 px-4 py-1 text-xs font-700 uppercase tracking-wide text-accent-700">
+        TikTok · YouTube · Instagram · Spotify
+      </span>
+      <h1 class="font-heading mt-4 text-3xl sm:text-4xl font-800 text-neutral-900">
+        제 모든 콘텐츠를 한곳에서 🎧
+      </h1>
+      <p class="mt-4 text-neutral-600">
+        매일 조금씩 한국어를 연습할 수 있도록 고른 클립, 에피소드, 릴스예요. 각 카드는
+        재생 버튼을 눌러야 실제 영상/오디오가 로드돼서, 페이지가 느려지지 않아요.
+      </p>
+    </div>
+  </section>
+
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <AdSlot position="post-intro" sizeLabel="728x90 / responsive" lang="ko" />
+
+    <div class="mx-auto grid max-w-3xl gap-6 py-8 sm:grid-cols-2">
+      {contentItems.map((item) => (
+        <EmbedCard
+          platform={item.platform}
+          embedUrl={item.embedUrl}
+          embedId={item.embedId}
+          title={contentText(item, "ko").title}
+          description={contentText(item, "ko").description}
+          tag={contentText(item, "ko").tag}
+          lang="ko"
+        />
+      ))}
+    </div>
+
+    <AdSlot position="pre-footer" sizeLabel="728x90 / responsive" lang="ko" />
+  </div>
+</BaseLayout>

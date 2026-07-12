@@ -1,0 +1,50 @@
+@import "tailwindcss";
+@import "@fontsource/quicksand/500.css";
+@import "@fontsource/quicksand/600.css";
+@import "@fontsource/quicksand/700.css";
+@import "@fontsource/nunito/400.css";
+@import "@fontsource/nunito/500.css";
+@import "@fontsource/nunito/600.css";
+@import "@fontsource/nunito/700.css";
+
+@theme {
+  --font-heading: "Quicksand", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Nunito", ui-sans-serif, system-ui, sans-serif;
+
+  /* Paleta pastel "verde + morado", pensada para una audiencia femenina, cálida
+     y cercana. brand = morado (acciones principales), accent = verde (highlights). */
+  --color-brand-50: #faf6fe;
+  --color-brand-100: #f0e6fc;
+  --color-brand-200: #e1ccf8;
+  --color-brand-300: #cba8f0;
+  --color-brand-400: #b183e3;
+  --color-brand-500: #9b6bd1;
+  --color-brand-600: #7f4fb8;
+  --color-brand-700: #653c97;
+  --color-brand-800: #4c2c73;
+  --color-brand-900: #362052;
+
+  --color-accent-100: #e4f7ec;
+  --color-accent-300: #b8ebc9;
+  --color-accent-400: #8fdda9;
+  --color-accent-500: #66cb86;
+  --color-accent-600: #48ad68;
+  --color-accent-700: #368752;
+
+  --color-neutral-50: #fdfbfe;
+  --color-neutral-100: #f6f1fa;
+
+  --color-ink-900: #362052;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: var(--font-heading);
+}

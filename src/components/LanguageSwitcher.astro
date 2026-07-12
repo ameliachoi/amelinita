@@ -1,0 +1,24 @@
+---
+import { getAlternateLangPath, useTranslations, type Lang } from "../i18n/translations";
+
+interface Props {
+  lang: Lang;
+  currentPath: string;
+}
+
+const { lang, currentPath } = Astro.props;
+const t = useTranslations(lang);
+const altPath = getAlternateLangPath(currentPath, lang);
+---
+
+<a
+  href={altPath}
+  class="fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 rounded-full bg-brand-800 px-4 py-2.5 text-xs font-600 text-white shadow-lg shadow-brand-900/30 ring-1 ring-white/10 transition-colors hover:bg-brand-700"
+  aria-label={t("lang.switchTo")}
+>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="10" />
+    <path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20" />
+  </svg>
+  {t("lang.switchTo")}
+</a>

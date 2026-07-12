@@ -1,0 +1,127 @@
+---
+// Formulario de contacto conectado a /api/contact (Resend).
+// Requiere RESEND_API_KEY y CONTACT_TO_EMAIL en las variables de entorno (ver README).
+import { useTranslations, type Lang } from "../i18n/translations";
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = "es" } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<form
+  id="contact-form"
+  class="space-y-5 rounded-2xl bg-white p-6 sm:p-8 shadow-sm ring-1 ring-neutral-100"
+  data-t-fill-all={t("contact.fillAll")}
+  data-t-generic-error={t("modal.genericError")}
+  data-t-network-error={t("modal.networkError")}
+  data-t-success={t("contact.success")}
+  data-t-submit={t("contact.submit")}
+  data-t-submitting={t("contact.submitting")}
+>
+  <div>
+    <label for="name" class="block text-sm font-600 text-neutral-700">{t("contact.nameLabel")}</label>
+    <input
+      id="name"
+      name="name"
+      type="text"
+      required
+      placeholder={t("contact.namePlaceholder")}
+      class="mt-1.5 w-full rounded-lg border border-neutral-200 px-4 py-2.5 text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-400"
+    />
+  </div>
+  <div>
+    <label for="email" class="block text-sm font-600 text-neutral-700">{t("modal.emailLabel")}</label>
+    <input
+      id="email"
+      name="email"
+      type="email"
+      required
+      placeholder={t("modal.emailPlaceholder")}
+      class="mt-1.5 w-full rounded-lg border border-neutral-200 px-4 py-2.5 text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-400"
+    />
+  </div>
+  <div>
+    <label for="message" class="block text-sm font-600 text-neutral-700">{t("contact.messageLabel")}</label>
+    <textarea
+      id="message"
+      name="message"
+      rows="5"
+      required
+      placeholder={t("contact.messagePlaceholder")}
+      class="mt-1.5 w-full rounded-lg border border-neutral-200 px-4 py-2.5 text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-400"
+    ></textarea>
+  </div>
+  <button
+    type="submit"
+    id="contact-submit"
+    class="w-full rounded-full bg-brand-600 px-6 py-3 text-sm font-600 text-white transition-colors hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-60"
+  >
+    {t("contact.submit")}
+  </button>
+  <p id="contact-message" class="hidden text-center text-xs"></p>
+  <p class="text-center text-xs text-neutral-400">
+    {lang === "ko" ? "지금은" : "Mientras tanto, escríbeme por"}
+    <a href="https://www.tiktok.com/@ameliachoi00" target="_blank" rel="noopener noreferrer" class="font-600 text-brand-600 hover:text-brand-700">
+      TikTok @ameliachoi00
+    </a>{lang === "ko" ? "으로 연락해주세요." : "."}
+  </p>
+</form>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>("#contact-form");
+  const submitBtn = document.querySelector<HTMLButtonElement>("#contact-submit");
+  const messageEl = document.querySelector<HTMLParagraphElement>("#contact-message");
+  const d = form?.dataset ?? {};
+
+  function showMessage(text: string, tone: "error" | "success") {
+    if (!messageEl) return;
+    messageEl.textContent = text;
+    messageEl.classList.remove("hidden", "text-red-500", "text-brand-700");
+    messageEl.classList.add(tone === "error" ? "text-red-500" : "text-brand-700");
+  }
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const formData = new FormData(form);
+    const name = String(formData.get("name") ?? "").trim();
+    const email = String(formData.get("email") ?? "").trim();
+    const message = String(formData.get("message") ?? "").trim();
+
+    if (!name || !message || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showMessage(d.tFillAll ?? "Invalid", "error");
+      return;
+    }
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = d.tSubmitting ?? "...";
+    }
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message }),
+      });
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        showMessage(data.error ?? d.tGenericError ?? "Error", "error");
+        return;
+      }
+
+      showMessage(d.tSuccess ?? "OK", "success");
+      form.reset();
+    } catch {
+      showMessage(d.tNetworkError ?? "Network error", "error");
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = d.tSubmit ?? "Submit";
+      }
+    }
+  });
+</script>

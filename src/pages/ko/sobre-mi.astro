@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AdSlot from "../../components/AdSlot.astro";
+import CTAButton from "../../components/CTAButton.astro";
+
+const description =
+  "amelinita 소개: 한국어 교육 전공자이자 스페인어를 공부 중인(DELE 준비 중) 크리에이터, 스페인어권을 위한 콘텐츠를 만들어요.";
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Amelia Choi (amelinita)",
+  alternateName: "amelinita",
+  nationality: "대한민국",
+  description,
+  image: "https://amelinita.com/images/amelia-profile.jpg",
+  knowsLanguage: ["ko", "es"],
+  sameAs: ["https://www.tiktok.com/@ameliachoi00"],
+};
+---
+
+<BaseLayout
+  title="소개"
+  description={description}
+  path="/ko/sobre-mi/"
+  jsonLd={personJsonLd}
+  lang="ko"
+>
+  <section class="bg-gradient-to-br from-brand-600 to-brand-800 py-16 sm:py-20">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 text-center">
+      <img
+        src="/images/amelia-profile.jpg"
+        alt="야외에서 웃고 있는 Amelia(amelinita)"
+        width="192"
+        height="192"
+        class="mx-auto h-48 w-48 rounded-full object-cover ring-4 ring-transparent shadow-lg"
+      />
+      <span class="mt-5 inline-block rounded-full bg-white/10 px-4 py-1 text-xs font-700 uppercase tracking-wide text-brand-100 ring-1 ring-white/20">
+        🌸 소개
+      </span>
+      <h1 class="font-heading mt-4 text-3xl sm:text-4xl font-800 text-white">
+        저는 Amelia, 여러분에겐 amelinita예요 💜
+      </h1>
+      <p class="mt-4 text-brand-100">
+        한국에 사는 한국인, 워킹맘, 그리고 스페인어를 공부하고 있어요. 제 이야기를 들려드릴게요.
+      </p>
+    </div>
+  </section>
+
+  <article class="mx-auto max-w-3xl px-4 sm:px-6 py-12 sm:py-16">
+    <div class="prose-custom space-y-5 text-neutral-700 leading-relaxed">
+      <p>
+        SNS는 거의 우연히 시작했어요. 원래는 인스타그램을 하고 싶었는데, 결국 틱톡을 하게 됐죠 🙈.
+        거기서 제가 한국에서 아이를 키우는 엄마이고, 오랜만에 스페인어를 다시 공부하고 있다는
+        이야기를 했는데 — 예상치 못하게 반응이 좋았어요. 계획한 건 아니었지만, 저를 팔로우하는
+        분들 대부분이 라틴아메리카 전역의 스페인어권 사용자였어요.
+      </p>
+      <p>
+        저는 한국어 교육학을 전공했지만, 스페인어에 있어서는 전문가가 아니라 학생이에요:
+        지금도 열심히 공부하고 있고, DELE 시험을 준비하는 중이에요 📖. 여러분과 똑같은 과정을
+        반대 방향으로 겪고 있어요 — 성인이 되어서, 시간이 많지 않은 채로 새로운 언어를 처음부터
+        배우는 것. 문법이 헷갈리고, 단어를 잊어버리고, 실력이 안 느는 것 같은 그 느낌을 저도
+        잘 알아요. 그래서 스페인어권 학습자에게 진짜로 도움이 되는 게 뭔지 더 잘 이해할 수 있어요.
+      </p>
+    </div>
+
+    <AdSlot position="post-intro" lang="ko" />
+
+    <div class="prose-custom space-y-5 text-neutral-700 leading-relaxed">
+      <h2 class="font-heading text-2xl font-700 text-neutral-900">🌿 제가 하는 일</h2>
+      <p>
+        저는 춤이나 뷰티 콘텐츠를 만드는 인플루언서가 아니에요. 스페인어로 제 생각과 한국
+        문화를 나누고 있고, 많은 분들이 요청해주셔서 — 한국어를 배우기 위한 무료 자료도
+        만들고 있어요: 다운로드 가능한 PDF와 TikTok, YouTube, Instagram, Spotify 콘텐츠까지,
+        모두 스페인어권 학습자를 위해 만들었어요.
+      </p>
+
+      <h2 class="font-heading text-2xl font-700 text-neutral-900">💚 왜 무료로 제공하나요</h2>
+      <p>
+        언어를 배우는 게 돈에 좌우되면 안 된다고 생각해요. 이 사이트는 여러분이 한곳에서,
+        스페인어로, 한국어 공부를 시작하거나 이어갈 수 있는 좋은 자료를 찾을 수 있도록
+        만들었어요.
+      </p>
+    </div>
+
+    <AdSlot position="pre-footer" lang="ko" />
+
+    <div class="mt-10 rounded-2xl bg-brand-50 p-8 text-center ring-1 ring-brand-100">
+      <h3 class="font-heading text-xl font-700 text-brand-800">오늘부터 시작해볼까요? 🌸</h3>
+      <p class="mt-2 text-sm text-brand-700/80">첫 PDF를 무료로 받거나, 제 콘텐츠를 만나보세요.</p>
+      <div class="mt-5 flex flex-wrap justify-center gap-4">
+        <CTAButton href="/ko/recursos-pdf/">PDF 보기 📚</CTAButton>
+        <CTAButton href="/ko/contenido/" variant="outline" class="!text-brand-700 !border-brand-300 hover:!bg-brand-100">
+          콘텐츠 보기 🎧
+        </CTAButton>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7F4FB8" />
+      <stop offset="100%" stop-color="#362052" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)" />
+  <circle cx="1020" cy="120" r="180" fill="#ffffff" opacity="0.06" />
+  <circle cx="150" cy="560" r="140" fill="#48AD68" opacity="0.18" />
+  <text x="600" y="300" text-anchor="middle" font-family="Quicksand, Arial, sans-serif" font-size="72" font-weight="800" fill="#ffffff">amelinita</text>
+  <text x="600" y="370" text-anchor="middle" font-family="Nunito, Arial, sans-serif" font-size="34" fill="#E1CCF8">Aprende coreano gratis en español</text>
+</svg>

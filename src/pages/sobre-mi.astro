@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AdSlot from "../components/AdSlot.astro";
+import CTAButton from "../components/CTAButton.astro";
+
+const description =
+  "Conoce a amelinita: coreana, especialista en educación del idioma coreano y estudiante de español (preparando el DELE), creadora de contenido para hispanohablantes.";
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Amelia Choi (amelinita)",
+  alternateName: "amelinita",
+  nationality: "Corea del Sur",
+  description,
+  image: "https://amelinita.com/images/amelia-profile.jpg",
+  knowsLanguage: ["ko", "es"],
+  sameAs: ["https://www.tiktok.com/@ameliachoi00"],
+};
+---
+
+<BaseLayout
+  title="Sobre mí"
+  description={description}
+  path="/sobre-mi/"
+  jsonLd={personJsonLd}
+>
+  <section class="bg-gradient-to-br from-brand-600 to-brand-800 py-16 sm:py-20">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 text-center">
+      <img
+        src="/images/amelia-profile.jpg"
+        alt="Amelia (amelinita) sonriendo al aire libre"
+        width="192"
+        height="192"
+        class="mx-auto h-48 w-48 rounded-full object-cover ring-4 ring-transparent shadow-lg"
+      />
+      <span class="mt-5 inline-block rounded-full bg-white/10 px-4 py-1 text-xs font-700 uppercase tracking-wide text-brand-100 ring-1 ring-white/20">
+        🌸 Sobre mí
+      </span>
+      <h1 class="font-heading mt-4 text-3xl sm:text-4xl font-800 text-white">
+        Hola, soy Amelia — pero me conoces como amelinita 💜
+      </h1>
+      <p class="mt-4 text-brand-100">
+        Coreana viviendo en Corea, mamá, y estudiante de español. Esta es mi historia.
+      </p>
+    </div>
+  </section>
+
+  <article class="mx-auto max-w-3xl px-4 sm:px-6 py-12 sm:py-16">
+    <div class="prose-custom space-y-5 text-neutral-700 leading-relaxed">
+      <p>
+        Mis amigas, empecé a compartir contenido en redes casi por accidente: quería hacer
+        Instagram y terminé haciendo TikTok 🙈. Ahí conté que era mamá en Corea y que estaba
+        retomando el español después de mucho tiempo — y algo hizo clic. Sin planearlo, la gran
+        mayoría de las personas que me siguen son chicas hispanohablantes de toda Latinoamérica.
+      </p>
+      <p>
+        Tengo formación en educación del idioma coreano, pero con el español soy alumna, no
+        experta: sigo estudiando activamente y preparándome para el examen DELE 📖. Vivo el mismo
+        proceso que tú, solo que al revés — aprender un idioma que no es el mío desde cero, como
+        adulta, con poco tiempo libre. Sé lo que se siente confundirse con la gramática, olvidar
+        vocabulario y sentir que no avanzas. Por eso entiendo, mejor que la mayoría, qué es lo que
+        realmente te ayuda a aprender coreano.
+      </p>
+    </div>
+
+    <AdSlot position="post-intro" />
+
+    <div class="prose-custom space-y-5 text-neutral-700 leading-relaxed">
+      <h2 class="font-heading text-2xl font-700 text-neutral-900">🌿 Lo que hago</h2>
+      <p>
+        No soy una influencer de baile ni de belleza. Comparto reflexiones en español, cultura
+        coreana, y — porque muchas de ustedes me lo pidieron — recursos gratuitos para aprender
+        coreano: PDFs descargables y contenido en TikTok, YouTube, Instagram y Spotify, pensado
+        específicamente para ti.
+      </p>
+
+      <h2 class="font-heading text-2xl font-700 text-neutral-900">💚 Por qué lo hago gratis</h2>
+      <p>
+        Creo que aprender un idioma no debería depender de cuánto puedas pagar. Este sitio existe
+        para que tengas, en un solo lugar y en español, material de calidad para empezar (o seguir)
+        tu camino con el coreano.
+      </p>
+    </div>
+
+    <AdSlot position="pre-footer" />
+
+    <div class="mt-10 rounded-2xl bg-brand-50 p-8 text-center ring-1 ring-brand-100">
+      <h3 class="font-heading text-xl font-700 text-brand-800">¿Empezamos hoy? 🌸</h3>
+      <p class="mt-2 text-sm text-brand-700/80">Descarga tu primer PDF gratuito o mira mi contenido gratis.</p>
+      <div class="mt-5 flex flex-wrap justify-center gap-4">
+        <CTAButton href="/recursos-pdf/">Ver PDFs 📚</CTAButton>
+        <CTAButton href="/contenido/" variant="outline" class="!text-brand-700 !border-brand-300 hover:!bg-brand-100">
+          Ver contenido 🎧
+        </CTAButton>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

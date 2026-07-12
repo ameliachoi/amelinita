@@ -1,0 +1,32 @@
+---
+interface Props {
+  icon: "globe" | "target" | "book";
+  title: string;
+  description: string;
+  accent?: "brand" | "accent" | "amber";
+}
+
+const { icon, title, description, accent = "brand" } = Astro.props;
+
+const iconPaths: Record<Props["icon"], string> = {
+  globe: "M12 21a9 9 0 100-18 9 9 0 000 18zM3.6 9h16.8M3.6 15h16.8M12 3a14.5 14.5 0 010 18M12 3a14.5 14.5 0 000 18",
+  target: "M12 21a9 9 0 100-18 9 9 0 000 18zM12 16a4 4 0 100-8 4 4 0 000 8zM12 13a1 1 0 100-2 1 1 0 000 2z",
+  book: "M4 5.5A2.5 2.5 0 016.5 3H20v15.5A2.5 2.5 0 0117.5 21H4V5.5zM4 5.5A2.5 2.5 0 016.5 8H20",
+};
+
+const bg: Record<string, string> = {
+  brand: "bg-brand-500",
+  accent: "bg-accent-600",
+  amber: "bg-amber-500",
+};
+---
+
+<div class="rounded-2xl bg-white p-6 text-center shadow-sm ring-1 ring-neutral-100">
+  <div class:list={["mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full text-white", bg[accent]]}>
+    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d={iconPaths[icon]} />
+    </svg>
+  </div>
+  <h3 class="font-heading text-lg font-700 text-neutral-900">{title}</h3>
+  <p class="mt-2 text-sm text-neutral-500">{description}</p>
+</div>

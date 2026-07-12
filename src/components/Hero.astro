@@ -1,0 +1,73 @@
+---
+import CTAButton from "./CTAButton.astro";
+---
+
+<section class="relative overflow-hidden bg-gradient-to-br from-brand-600 via-brand-700 to-brand-900">
+  <div class="pointer-events-none absolute -top-24 -right-24 h-96 w-96 rounded-full bg-brand-400/20 blur-3xl"></div>
+  <div class="pointer-events-none absolute bottom-0 left-0 h-72 w-72 rounded-full bg-accent-500/10 blur-3xl"></div>
+
+  <div class="relative mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-28">
+    <div class="grid items-center gap-12 md:grid-cols-2">
+      <div>
+        <span class="inline-block rounded-full bg-white/10 px-4 py-1 text-xs font-700 uppercase tracking-wide text-brand-100 ring-1 ring-white/20">
+          💜 Coreano para hispanohablantes
+        </span>
+        <h1 class="font-heading mt-5 text-4xl sm:text-5xl font-800 leading-tight text-white">
+          ¿Aprender coreano<br /> te parece <span class="text-accent-400">muy difícil</span> 😩?
+        </h1>
+        <p class="mt-5 max-w-md text-base sm:text-lg text-brand-100">
+          No estás sola. Por eso creé un espacio con material gratuito, claro y pensado
+          especialmente para hispanohablantes que quieren aprender coreano de verdad ✨.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <CTAButton href="#solucion">Ver los recursos gratis 💜</CTAButton>
+          <CTAButton href="/sobre-mi/" variant="outline">Conóceme 🌿</CTAButton>
+        </div>
+      </div>
+
+      <div class="flex justify-center">
+        <svg
+          viewBox="0 0 420 360"
+          class="w-full max-w-md drop-shadow-2xl"
+          xmlns="http://www.w3.org/2000/svg"
+          role="img"
+          aria-label="Ilustración de una conversación entre coreano y español"
+        >
+          <ellipse cx="210" cy="330" rx="150" ry="18" fill="#362052" opacity="0.4" />
+
+          <!-- book -->
+          <g transform="translate(60,150)">
+            <path d="M0 20 Q70 -10 140 20 L140 140 Q70 110 0 140 Z" fill="#ffffff" />
+            <path d="M140 20 Q210 -10 280 20 L280 140 Q210 110 140 140 Z" fill="#f6f1fa" />
+            <path d="M140 20 L140 140" stroke="#e1ccf8" stroke-width="2" />
+            <path d="M25 45 Q70 25 115 45" stroke="#cba8f0" stroke-width="4" stroke-linecap="round" fill="none" />
+            <path d="M25 70 Q70 50 115 70" stroke="#cba8f0" stroke-width="4" stroke-linecap="round" fill="none" />
+            <path d="M25 95 Q70 75 115 95" stroke="#cba8f0" stroke-width="4" stroke-linecap="round" fill="none" />
+            <path d="M165 45 Q210 25 255 45" stroke="#e1ccf8" stroke-width="4" stroke-linecap="round" fill="none" />
+            <path d="M165 70 Q210 50 255 70" stroke="#e1ccf8" stroke-width="4" stroke-linecap="round" fill="none" />
+            <path d="M165 95 Q210 75 255 95" stroke="#e1ccf8" stroke-width="4" stroke-linecap="round" fill="none" />
+          </g>
+
+          <!-- speech bubble KR -->
+          <g transform="translate(20,30)">
+            <rect x="0" y="0" width="120" height="70" rx="20" fill="#48ad68" />
+            <path d="M20 68 L14 92 L46 68 Z" fill="#48ad68" />
+            <text x="60" y="44" text-anchor="middle" font-size="26" font-weight="700" fill="white" font-family="Quicksand, sans-serif">안녕!</text>
+          </g>
+
+          <!-- speech bubble ES -->
+          <g transform="translate(260,20)">
+            <rect x="0" y="0" width="140" height="70" rx="20" fill="white" />
+            <path d="M110 68 L120 92 L84 68 Z" fill="white" />
+            <text x="70" y="44" text-anchor="middle" font-size="24" font-weight="700" fill="#653c97" font-family="Quicksand, sans-serif">¡Hola!</text>
+          </g>
+
+          <!-- floating dots -->
+          <circle cx="350" cy="180" r="10" fill="#b8ebc9" />
+          <circle cx="40" cy="230" r="7" fill="#e1ccf8" />
+          <circle cx="370" cy="110" r="6" fill="#ffffff" opacity="0.6" />
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>

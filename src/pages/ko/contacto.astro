@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AdSlot from "../../components/AdSlot.astro";
+import ContactForm from "../../components/ContactForm.astro";
+
+const description =
+  "협업 문의, 한국어 자료 관련 질문, 그 외 궁금한 점이 있다면 amelinita에게 연락해주세요.";
+---
+
+<BaseLayout
+  title="문의하기"
+  description={description}
+  path="/ko/contacto/"
+  lang="ko"
+>
+  <section class="bg-gradient-to-br from-brand-600 to-brand-800 py-16 sm:py-20">
+    <div class="mx-auto max-w-2xl px-4 sm:px-6 text-center">
+      <span class="inline-block rounded-full bg-white/10 px-4 py-1 text-xs font-700 uppercase tracking-wide text-brand-100 ring-1 ring-white/20">
+        문의하기
+      </span>
+      <h1 class="font-heading mt-4 text-3xl sm:text-4xl font-800 text-white">
+        메시지 보내기 💌
+      </h1>
+      <p class="mt-4 text-brand-100">
+        질문, 제안, 협업 제의가 있으신가요? 아래 폼을 작성하거나 TikTok으로 바로
+        메시지를 보내주세요.
+      </p>
+    </div>
+  </section>
+
+  <div class="mx-auto max-w-xl px-4 sm:px-6 py-14">
+    <ContactForm lang="ko" />
+    <AdSlot position="footer-minimal" lang="ko" />
+  </div>
+</BaseLayout>

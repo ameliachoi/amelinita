@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AdSlot from "../components/AdSlot.astro";
+import EmbedCard from "../components/EmbedCard.astro";
+import { contentItems, contentText } from "../data/content";
+
+const description =
+  "TikTok, YouTube, Instagram y Spotify de amelinita en un solo lugar: contenido gratuito para aprender coreano en español.";
+---
+
+<BaseLayout
+  title="Contenido para aprender coreano"
+  description={description}
+  path="/contenido/"
+>
+  <section class="bg-neutral-50 py-16 sm:py-20">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 text-center">
+      <span class="inline-block rounded-full bg-accent-100 px-4 py-1 text-xs font-700 uppercase tracking-wide text-accent-700">
+        TikTok · YouTube · Instagram · Spotify
+      </span>
+      <h1 class="font-heading mt-4 text-3xl sm:text-4xl font-800 text-neutral-900">
+        Todo mi contenido, en un solo lugar 🎧
+      </h1>
+      <p class="mt-4 text-neutral-600">
+        Clips, episodios y reels seleccionados para que practiques coreano un poco cada día.
+        Cada tarjeta carga su video o audio solo cuando le das play, para que la página no se
+        vuelva lenta.
+      </p>
+    </div>
+  </section>
+
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <AdSlot position="post-intro" sizeLabel="728x90 / responsive" />
+
+    <div class="mx-auto grid max-w-3xl gap-6 py-8 sm:grid-cols-2">
+      {contentItems.map((item) => (
+        <EmbedCard
+          platform={item.platform}
+          embedUrl={item.embedUrl}
+          embedId={item.embedId}
+          title={contentText(item, "es").title}
+          description={contentText(item, "es").description}
+          tag={contentText(item, "es").tag}
+        />
+      ))}
+    </div>
+
+    <AdSlot position="pre-footer" sizeLabel="728x90 / responsive" />
+  </div>
+</BaseLayout>

@@ -1,0 +1,78 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AdSlot from "../components/AdSlot.astro";
+import ResourceCard from "../components/ResourceCard.astro";
+import NewsletterSignupUI from "../components/NewsletterSignupUI.astro";
+import { pdfs, pdfContent } from "../data/pdfs";
+
+const description =
+  "Descarga PDFs gratuitos para aprender coreano en español: hangul, vocabulario, gramática y frases útiles para hispanohablantes.";
+
+const half = Math.ceil(pdfs.length / 2);
+const firstHalf = pdfs.slice(0, half);
+const secondHalf = pdfs.slice(half);
+---
+
+<BaseLayout
+  title="Recursos en PDF para aprender coreano"
+  description={description}
+  path="/recursos-pdf/"
+>
+  <section class="bg-neutral-50 py-16 sm:py-20">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 text-center">
+      <span class="inline-block rounded-full bg-brand-100 px-4 py-1 text-xs font-700 uppercase tracking-wide text-brand-700">
+        💜 Material gratuito
+      </span>
+      <h1 class="font-heading mt-4 text-3xl sm:text-4xl font-800 text-neutral-900">
+        PDFs gratuitos para aprender coreano 📚
+      </h1>
+      <p class="mt-4 text-neutral-600">
+        Guías, listas de vocabulario y explicaciones de gramática, todo en español y pensado
+        para hispanohablantes. Descarga lo que necesites, a tu ritmo.
+      </p>
+    </div>
+  </section>
+
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <AdSlot position="post-intro" sizeLabel="728x90 / responsive" />
+
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 py-4">
+      {firstHalf.map((pdf) => (
+        <ResourceCard title={pdfContent(pdf, "es").title} description={pdfContent(pdf, "es").description} tag={pdfContent(pdf, "es").tag}>
+          <Fragment slot="action">
+            <a href={`/recursos-pdf/${pdf.slug}/`} class="text-sm font-600 text-brand-600 hover:text-brand-700">
+              Ver y descargar 💜
+            </a>
+          </Fragment>
+        </ResourceCard>
+      ))}
+    </div>
+
+    {secondHalf.length > 0 && (
+      <>
+        <AdSlot position="mid-content" sizeLabel="300x250" />
+
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 py-4">
+          {secondHalf.map((pdf) => (
+            <ResourceCard title={pdfContent(pdf, "es").title} description={pdfContent(pdf, "es").description} tag={pdfContent(pdf, "es").tag}>
+              <Fragment slot="action">
+                <a href={`/recursos-pdf/${pdf.slug}/`} class="text-sm font-600 text-brand-600 hover:text-brand-700">
+                  Ver y descargar 💜
+                </a>
+              </Fragment>
+            </ResourceCard>
+          ))}
+        </div>
+      </>
+    )}
+
+    <div class="py-8 max-w-xl mx-auto">
+      <NewsletterSignupUI
+        title="No te pierdas los nuevos PDFs 💌"
+        description="Deja tu correo y te aviso apenas publique material nuevo (próximamente)."
+      />
+    </div>
+
+    <AdSlot position="pre-footer" sizeLabel="728x90 / responsive" />
+  </div>
+</BaseLayout>

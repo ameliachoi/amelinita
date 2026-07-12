@@ -1,0 +1,153 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import StorySection from "../components/StorySection.astro";
+import FeatureCard from "../components/FeatureCard.astro";
+import ResourceCard from "../components/ResourceCard.astro";
+import NewsletterSignupUI from "../components/NewsletterSignupUI.astro";
+import CTAButton from "../components/CTAButton.astro";
+import { pdfs, pdfContent } from "../data/pdfs";
+import { contentItems, contentText } from "../data/content";
+
+const description =
+  "Aprende coreano gratis en español. PDFs, videos y recursos creados por amelinita, coreana y profesora de idiomas, especialmente para hispanohablantes.";
+---
+
+<BaseLayout
+  title="amelinita — Aprende coreano gratis en español"
+  description={description}
+  path="/"
+>
+  <Hero />
+
+  <section id="solucion">
+    <StorySection
+      eyebrow="✨ La solución"
+      title="Los mejores recursos gratuitos, hechos con cariño para ti"
+    >
+      <Fragment slot="body">
+        <p>
+          Nada de traducciones automáticas ni materiales pensados para hablantes de inglés 🙅‍♀️.
+          Cada PDF y cada video que comparto está adaptado a cómo aprendemos las hispanohablantes:
+          con ejemplos, comparaciones y errores comunes explicados en español, como si te lo
+          contara una amiga.
+        </p>
+      </Fragment>
+      <Fragment slot="illustration">
+        <svg viewBox="0 0 320 280" class="w-full max-w-sm" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustración de materiales de estudio gratuitos">
+          <circle cx="160" cy="140" r="130" fill="#faf6fe" />
+          <rect x="70" y="90" width="90" height="120" rx="10" fill="white" stroke="#e1ccf8" stroke-width="3" />
+          <text x="115" y="130" text-anchor="middle" font-size="34" font-family="Quicksand, sans-serif" fill="#9b6bd1">PDF</text>
+          <path d="M85 155 H145 M85 170 H145 M85 185 H120" stroke="#e1ccf8" stroke-width="4" stroke-linecap="round" />
+          <circle cx="215" cy="150" r="45" fill="#48ad68" />
+          <path d="M205 132 L235 150 L205 168 Z" fill="white" />
+        </svg>
+      </Fragment>
+    </StorySection>
+
+    <div class="mx-auto -mt-6 max-w-6xl px-4 sm:px-6 pb-16 sm:pb-24">
+      <div class="grid gap-6 sm:grid-cols-3">
+        <FeatureCard
+          icon="book"
+          title="📚 PDFs descargables"
+          description="Guías, vocabulario y gramática explicados en español, listos para imprimir o estudiar desde el celular."
+          accent="brand"
+        />
+        <FeatureCard
+          icon="target"
+          title="🎧 Contenido corto"
+          description="TikTok, YouTube, Instagram y Spotify directo al punto, ideal para practicar todos los días sin sentirte abrumada."
+          accent="accent"
+        />
+        <FeatureCard
+          icon="globe"
+          title="💜 Comunidad hispanohablante"
+          description="Miles de chicas de toda Latinoamérica ya están aprendiendo coreano conmigo."
+          accent="brand"
+        />
+      </div>
+    </div>
+  </section>
+
+  <StorySection
+    eyebrow="🌿 ¿Por qué confiar en mí?"
+    title="Aprende con una amiga que entiende ambos mundos"
+    reverse
+    bgClass="bg-neutral-50"
+  >
+    <Fragment slot="body">
+      <p>
+        Soy coreana, tengo formación en educación del idioma coreano y llevo años aprendiendo
+        español desde cero (ahora mismo preparando el examen DELE 💪) — así que sé exactamente
+        en qué te trabas al aprender coreano, porque yo vivo el proceso inverso todos los días.
+      </p>
+      <p>
+        No soy una influencer de baile ni de belleza: comparto lo que realmente pienso, en
+        español, y eso incluye enseñarte coreano de la forma más honesta y cercana que puedo 💜.
+      </p>
+    </Fragment>
+    <Fragment slot="cta">
+      <CTAButton href="/sobre-mi/" class="bg-brand-600 hover:bg-brand-700 shadow-brand-500/20 text-white">
+        Conoce mi historia 🌸
+      </CTAButton>
+    </Fragment>
+    <Fragment slot="illustration">
+      <svg viewBox="0 0 320 280" class="w-full max-w-sm" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustración de una profesora conectando dos culturas">
+        <circle cx="160" cy="140" r="130" fill="#e4f7ec" />
+        <circle cx="160" cy="105" r="42" fill="#48ad68" />
+        <rect x="105" y="150" width="110" height="90" rx="30" fill="#9b6bd1" />
+        <path d="M60 130 Q40 100 70 80" stroke="#cba8f0" stroke-width="6" fill="none" stroke-linecap="round" />
+        <path d="M260 130 Q280 100 250 80" stroke="#b8ebc9" stroke-width="6" fill="none" stroke-linecap="round" />
+        <text x="55" y="70" font-size="22" font-weight="700" fill="#653c97" font-family="Quicksand, sans-serif">한</text>
+        <text x="245" y="70" font-size="22" font-weight="700" fill="#368752" font-family="Quicksand, sans-serif">ES</text>
+      </svg>
+    </Fragment>
+  </StorySection>
+
+  <section class="py-16 sm:py-24">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <div class="text-center max-w-2xl mx-auto">
+        <span class="inline-block rounded-full bg-brand-100 px-4 py-1 text-xs font-700 uppercase tracking-wide text-brand-700">
+          🌟 Empieza ahora
+        </span>
+        <h2 class="font-heading mt-4 text-2xl sm:text-3xl font-800 text-neutral-900">
+          Explora los recursos gratuitos
+        </h2>
+      </div>
+
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {pdfs.slice(0, 2).map((pdf) => (
+          <ResourceCard title={pdfContent(pdf, "es").title} description={pdfContent(pdf, "es").description} tag={pdfContent(pdf, "es").tag}>
+            <Fragment slot="action">
+              <a href={`/recursos-pdf/${pdf.slug}/`} class="text-sm font-600 text-brand-600 hover:text-brand-700">
+                Ver PDF →
+              </a>
+            </Fragment>
+          </ResourceCard>
+        ))}
+        {contentItems.slice(0, 2).map((item) => (
+          <ResourceCard title={contentText(item, "es").title} description={contentText(item, "es").description} tag={contentText(item, "es").tag}>
+            <Fragment slot="action">
+              <a href="/contenido/" class="text-sm font-600 text-brand-600 hover:text-brand-700">
+                Ver contenido →
+              </a>
+            </Fragment>
+          </ResourceCard>
+        ))}
+      </div>
+
+      <div class="mt-12 grid gap-8 md:grid-cols-2 md:items-center">
+        <NewsletterSignupUI />
+        <div class="rounded-2xl bg-gradient-to-br from-brand-600 to-brand-800 p-8 text-center md:text-left">
+          <h3 class="font-heading text-xl font-700 text-white">¿Lista para empezar? 🌸</h3>
+          <p class="mt-2 text-sm text-brand-100">
+            Todos los recursos son gratuitos. Solo tienes que dar el primer paso 💫.
+          </p>
+          <div class="mt-5">
+            <CTAButton href="/recursos-pdf/">Ver todos los recursos ✨</CTAButton>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

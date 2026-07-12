@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(npm create *)",
+      "Bash(mv _tmp_scaffold/.gitignore _tmp_scaffold/AGENTS.md _tmp_scaffold/CLAUDE.md _tmp_scaffold/README.md _tmp_scaffold/astro.config.mjs _tmp_scaffold/package.json _tmp_scaffold/tsconfig.json _tmp_scaffold/public _tmp_scaffold/src .)",
+      "Bash(mv _tmp_scaffold/.vscode .)",
+      "Bash(rmdir _tmp_scaffold)",
+      "Bash(npm install *)",
+      "Bash(npx astro *)",
+      "Bash(npm run *)",
+      "Bash(python -c \"import PIL; print\\(PIL.__version__\\)\")",
+      "Bash(python -m pip install --quiet pillow)",
+      "Bash(mkdir -p public/images)",
+      "Bash(python3 -)",
+      "Bash(python -)",
+      "Bash(git init *)"
+    ]
+  }
+}

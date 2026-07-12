@@ -1,0 +1,103 @@
+---
+// Formulario de newsletter conectado a /api/subscribe (Beehiiv).
+// Requiere BEEHIIV_API_KEY y BEEHIIV_PUBLICATION_ID en las variables de entorno (ver README).
+import { useTranslations, type Lang } from "../i18n/translations";
+
+interface Props {
+  title?: string;
+  description?: string;
+  lang?: Lang;
+}
+
+const { lang = "es", title, description } = Astro.props;
+const t = useTranslations(lang);
+const finalTitle = title ?? t("newsletter.title");
+const finalDescription = description ?? t("newsletter.description");
+---
+
+<div
+  class="rounded-2xl bg-brand-50 p-6 sm:p-8 ring-1 ring-brand-100"
+  data-t-invalid-email={t("modal.invalidEmail")}
+  data-t-generic-error={t("modal.genericError")}
+  data-t-network-error={t("modal.networkError")}
+  data-t-success={t("newsletter.success")}
+  data-t-submit={t("newsletter.submit")}
+  data-t-submitting={t("modal.submitting")}
+>
+  <h3 class="font-heading text-lg font-700 text-brand-800">{finalTitle}</h3>
+  <p class="mt-1 text-sm text-brand-700/80">{finalDescription}</p>
+  <form class="mt-4 flex flex-col gap-3 sm:flex-row" data-newsletter-form>
+    <label for="newsletter-email" class="sr-only">{t("modal.emailLabel")}</label>
+    <input
+      id="newsletter-email"
+      name="email"
+      type="email"
+      required
+      placeholder={t("modal.emailPlaceholder")}
+      class="w-full rounded-full border border-brand-200 bg-white px-4 py-2.5 text-sm text-neutral-700 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-400"
+    />
+    <button
+      type="submit"
+      data-newsletter-submit
+      class="whitespace-nowrap rounded-full bg-brand-600 px-6 py-2.5 text-sm font-600 text-white transition-colors hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-60"
+    >
+      {t("newsletter.submit")}
+    </button>
+  </form>
+  <p data-newsletter-message class="mt-2 hidden text-[11px]"></p>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLDivElement>("[data-t-submit]").forEach((wrapper) => {
+    const form = wrapper.querySelector<HTMLFormElement>("form[data-newsletter-form]");
+    const input = wrapper.querySelector<HTMLInputElement>("input[type='email']");
+    const button = wrapper.querySelector<HTMLButtonElement>("[data-newsletter-submit]");
+    const message = wrapper.querySelector<HTMLParagraphElement>("[data-newsletter-message]");
+    const d = wrapper.dataset;
+
+    function showMessage(text: string, tone: "error" | "success") {
+      if (!message) return;
+      message.textContent = text;
+      message.classList.remove("hidden", "text-red-500", "text-brand-700");
+      message.classList.add(tone === "error" ? "text-red-500" : "text-brand-700");
+    }
+
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const email = input?.value.trim() ?? "";
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showMessage(d.tInvalidEmail ?? "Invalid email", "error");
+        return;
+      }
+
+      if (button) {
+        button.disabled = true;
+        button.textContent = d.tSubmitting ?? "...";
+      }
+
+      try {
+        const res = await fetch("/api/subscribe", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, source: "newsletter" }),
+        });
+        const data = await res.json().catch(() => ({}));
+
+        if (!res.ok) {
+          showMessage(data.error ?? d.tGenericError ?? "Error", "error");
+          return;
+        }
+
+        showMessage(d.tSuccess ?? "OK", "success");
+        form.reset();
+      } catch {
+        showMessage(d.tNetworkError ?? "Network error", "error");
+      } finally {
+        if (button) {
+          button.disabled = false;
+          button.textContent = d.tSubmit ?? "Submit";
+        }
+      }
+    });
+  });
+</script>

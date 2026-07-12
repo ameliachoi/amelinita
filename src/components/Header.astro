@@ -1,0 +1,73 @@
+---
+import { useTranslations, type Lang } from "../i18n/translations";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const prefix = lang === "ko" ? "/ko" : "";
+
+const navLinks = [
+  { href: `${prefix}/sobre-mi/`, label: t("nav.sobreMi") },
+  { href: `${prefix}/recursos-pdf/`, label: t("nav.pdf") },
+  { href: `${prefix}/contenido/`, label: t("nav.contenido") },
+  { href: `${prefix}/contacto/`, label: t("nav.contacto") },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-neutral-100">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <div class="flex h-16 items-center justify-between">
+      <a href={lang === "ko" ? "/ko/" : "/"} class="font-heading text-xl font-800 tracking-tight text-brand-700">
+        amelinita
+      </a>
+
+      <input type="checkbox" id="nav-toggle" class="peer hidden" />
+
+      <nav class="hidden md:flex items-center gap-8" aria-label="Navegación principal">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              "text-sm font-medium transition-colors hover:text-brand-600",
+              currentPath === link.href ? "text-brand-700" : "text-neutral-600",
+            ]}
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
+
+      <label
+        for="nav-toggle"
+        class="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg text-neutral-700 hover:bg-neutral-100 cursor-pointer"
+        aria-label="Abrir menú"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </label>
+    </div>
+
+    <nav
+      class="md:hidden hidden peer-checked:flex flex-col gap-1 pb-4"
+      aria-label="Navegación móvil"
+    >
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            "rounded-lg px-3 py-2 text-sm font-medium",
+            currentPath === link.href ? "bg-brand-50 text-brand-700" : "text-neutral-600 hover:bg-neutral-50",
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>

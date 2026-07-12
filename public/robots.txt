@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://amelinita.com/sitemap-index.xml

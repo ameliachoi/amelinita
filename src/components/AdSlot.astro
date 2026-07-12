@@ -1,0 +1,34 @@
+---
+// Espacio reservado para Google AdSense.
+// TODO: una vez aprobada la cuenta de AdSense (requiere dominio en vivo + contenido real),
+// reemplazar el contenido de este bloque por el <ins class="adsbygoogle"> correspondiente
+// y cargar el script de AdSense en BaseLayout.astro.
+import { useTranslations, type Lang } from "../i18n/translations";
+
+interface Props {
+  position: "post-intro" | "mid-content" | "pre-footer" | "footer-minimal";
+  sizeLabel?: string;
+  lang?: Lang;
+}
+
+const { position, sizeLabel = "Responsive", lang = "es" } = Astro.props;
+const t = useTranslations(lang);
+
+const labelKeys = {
+  "post-intro": "ad.postIntro",
+  "mid-content": "ad.midContent",
+  "pre-footer": "ad.preFooter",
+  "footer-minimal": "ad.minimal",
+} as const;
+---
+
+<div
+  class="mx-auto my-8 flex min-h-[100px] w-full max-w-3xl items-center justify-center rounded-xl border-2 border-dashed border-neutral-300 bg-neutral-50 text-center"
+  data-ad-slot={position}
+  aria-hidden="true"
+>
+  <div class="px-4 py-6">
+    <p class="text-xs font-600 uppercase tracking-wide text-neutral-400">{t(labelKeys[position])}</p>
+    <p class="mt-1 text-[11px] text-neutral-300">{sizeLabel} · {t("ad.reserved")}</p>
+  </div>
+</div>

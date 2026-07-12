@@ -1,0 +1,209 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+import StorySection from "../../components/StorySection.astro";
+import FeatureCard from "../../components/FeatureCard.astro";
+import ResourceCard from "../../components/ResourceCard.astro";
+import NewsletterSignupUI from "../../components/NewsletterSignupUI.astro";
+import CTAButton from "../../components/CTAButton.astro";
+import { pdfs, pdfContent } from "../../data/pdfs";
+import { contentItems, contentText } from "../../data/content";
+
+const description =
+  "스페인어권 학습자를 위한 무료 한국어 학습 자료. PDF, 영상, 그리고 amelinita가 직접 만든 콘텐츠를 만나보세요.";
+---
+
+<BaseLayout
+  title="amelinita — 스페인어권을 위한 무료 한국어 학습 자료"
+  description={description}
+  path="/ko/"
+  lang="ko"
+>
+  <section class="relative overflow-hidden bg-gradient-to-br from-brand-600 via-brand-700 to-brand-900">
+    <div class="pointer-events-none absolute -top-24 -right-24 h-96 w-96 rounded-full bg-brand-400/20 blur-3xl"></div>
+    <div class="pointer-events-none absolute bottom-0 left-0 h-72 w-72 rounded-full bg-accent-500/10 blur-3xl"></div>
+
+    <div class="relative mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-28">
+      <div class="grid items-center gap-12 md:grid-cols-2">
+        <div>
+          <span class="inline-block rounded-full bg-white/10 px-4 py-1 text-xs font-700 uppercase tracking-wide text-brand-100 ring-1 ring-white/20">
+            💜 스페인어권을 위한 한국어
+          </span>
+          <h1 class="font-heading mt-5 text-4xl sm:text-5xl font-800 leading-tight text-white">
+            한국어 공부하기<br /> 너무 <span class="text-accent-400">어렵지요</span> 😩?
+          </h1>
+          <p class="mt-5 max-w-md text-base sm:text-lg text-brand-100">
+            저도 그 마음 알아요. 그래서 스페인어권 학습자를 위한 무료 자료를 만들고 있어요 —
+            명확하고, 실제로 도움이 되는 자료로요 ✨.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <CTAButton href="#solucion">무료 자료 보러가기 💜</CTAButton>
+            <CTAButton href="/ko/sobre-mi/" variant="outline">소개 보기 🌿</CTAButton>
+          </div>
+        </div>
+
+        <div class="flex justify-center">
+          <svg viewBox="0 0 420 360" class="w-full max-w-md drop-shadow-2xl" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="한국어와 스페인어 대화 일러스트">
+            <ellipse cx="210" cy="330" rx="150" ry="18" fill="#362052" opacity="0.4" />
+            <g transform="translate(60,150)">
+              <path d="M0 20 Q70 -10 140 20 L140 140 Q70 110 0 140 Z" fill="#ffffff" />
+              <path d="M140 20 Q210 -10 280 20 L280 140 Q210 110 140 140 Z" fill="#f6f1fa" />
+              <path d="M140 20 L140 140" stroke="#e1ccf8" stroke-width="2" />
+              <path d="M25 45 Q70 25 115 45" stroke="#cba8f0" stroke-width="4" stroke-linecap="round" fill="none" />
+              <path d="M25 70 Q70 50 115 70" stroke="#cba8f0" stroke-width="4" stroke-linecap="round" fill="none" />
+              <path d="M25 95 Q70 75 115 95" stroke="#cba8f0" stroke-width="4" stroke-linecap="round" fill="none" />
+              <path d="M165 45 Q210 25 255 45" stroke="#e1ccf8" stroke-width="4" stroke-linecap="round" fill="none" />
+              <path d="M165 70 Q210 50 255 70" stroke="#e1ccf8" stroke-width="4" stroke-linecap="round" fill="none" />
+              <path d="M165 95 Q210 75 255 95" stroke="#e1ccf8" stroke-width="4" stroke-linecap="round" fill="none" />
+            </g>
+            <g transform="translate(20,30)">
+              <rect x="0" y="0" width="120" height="70" rx="20" fill="#48ad68" />
+              <path d="M20 68 L14 92 L46 68 Z" fill="#48ad68" />
+              <text x="60" y="44" text-anchor="middle" font-size="26" font-weight="700" fill="white" font-family="Quicksand, sans-serif">안녕!</text>
+            </g>
+            <g transform="translate(260,20)">
+              <rect x="0" y="0" width="140" height="70" rx="20" fill="white" />
+              <path d="M110 68 L120 92 L84 68 Z" fill="white" />
+              <text x="70" y="44" text-anchor="middle" font-size="24" font-weight="700" fill="#653c97" font-family="Quicksand, sans-serif">¡Hola!</text>
+            </g>
+            <circle cx="350" cy="180" r="10" fill="#b8ebc9" />
+            <circle cx="40" cy="230" r="7" fill="#e1ccf8" />
+            <circle cx="370" cy="110" r="6" fill="#ffffff" opacity="0.6" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="solucion">
+    <StorySection
+      eyebrow="✨ 해결책"
+      title="스페인어권 학습자를 위한 최적의 무료 자료"
+    >
+      <Fragment slot="body">
+        <p>
+          자동 번역이나 영어권 학습자를 위한 자료가 아니에요. 제가 공유하는 모든 PDF와 영상은
+          스페인어권 학습자가 실제로 어떻게 배우는지를 고려해서 만들었어요 — 예문, 비교, 자주
+          하는 실수까지 구체적으로 짚어드려요.
+        </p>
+      </Fragment>
+      <Fragment slot="illustration">
+        <svg viewBox="0 0 320 280" class="w-full max-w-sm" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="무료 학습 자료 일러스트">
+          <circle cx="160" cy="140" r="130" fill="#faf6fe" />
+          <rect x="70" y="90" width="90" height="120" rx="10" fill="white" stroke="#e1ccf8" stroke-width="3" />
+          <text x="115" y="130" text-anchor="middle" font-size="34" font-family="Quicksand, sans-serif" fill="#9b6bd1">PDF</text>
+          <path d="M85 155 H145 M85 170 H145 M85 185 H120" stroke="#e1ccf8" stroke-width="4" stroke-linecap="round" />
+          <circle cx="215" cy="150" r="45" fill="#48ad68" />
+          <path d="M205 132 L235 150 L205 168 Z" fill="white" />
+        </svg>
+      </Fragment>
+    </StorySection>
+
+    <div class="mx-auto -mt-6 max-w-6xl px-4 sm:px-6 pb-16 sm:pb-24">
+      <div class="grid gap-6 sm:grid-cols-3">
+        <FeatureCard
+          icon="book"
+          title="📚 다운로드 가능한 PDF"
+          description="가이드, 어휘, 문법을 스페인어로 설명한 자료예요. 인쇄하거나 휴대폰으로 바로 볼 수 있어요."
+          accent="brand"
+        />
+        <FeatureCard
+          icon="target"
+          title="🎧 짧은 콘텐츠"
+          description="TikTok, YouTube, Instagram, Spotify까지 — 부담 없이 매일 조금씩 연습할 수 있어요."
+          accent="accent"
+        />
+        <FeatureCard
+          icon="globe"
+          title="💜 스페인어권 커뮤니티"
+          description="라틴아메리카 전역의 수많은 스페인어권 학습자들이 저와 함께 한국어를 공부하고 있어요."
+          accent="brand"
+        />
+      </div>
+    </div>
+  </section>
+
+  <StorySection
+    eyebrow="🌿 왜 저인가요?"
+    title="양쪽 세계를 모두 이해하는 사람의 자료예요"
+    reverse
+    bgClass="bg-neutral-50"
+  >
+    <Fragment slot="body">
+      <p>
+        저는 한국어 교육학을 전공했고, 몇 년째 스페인어를 처음부터 공부하고 있어요 — 지금도
+        DELE 시험을 준비하는 중이에요 💪. 문법이 헷갈리고, 단어를 잊어버리고, 실력이 안 느는 것
+        같은 그 느낌을 저도 매일 경험해요. 그래서 스페인어권 학습자가 한국어를 배울 때
+        실제로 무엇이 도움이 되는지 더 잘 이해할 수 있어요.
+      </p>
+      <p>
+        저는 춤이나 뷰티 콘텐츠를 만드는 인플루언서가 아니에요. 스페인어로 제 생각을
+        진솔하게 나누고, 그 안에는 최대한 정직하고 실용적으로 한국어를 알려드리는 것도
+        포함돼 있어요 💜.
+      </p>
+    </Fragment>
+    <Fragment slot="cta">
+      <CTAButton href="/ko/sobre-mi/" class="bg-brand-600 hover:bg-brand-700 shadow-brand-500/20 text-white">
+        제 이야기 더 보기 🌸
+      </CTAButton>
+    </Fragment>
+    <Fragment slot="illustration">
+      <svg viewBox="0 0 320 280" class="w-full max-w-sm" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="두 문화를 연결하는 선생님 일러스트">
+        <circle cx="160" cy="140" r="130" fill="#e4f7ec" />
+        <circle cx="160" cy="105" r="42" fill="#48ad68" />
+        <rect x="105" y="150" width="110" height="90" rx="30" fill="#9b6bd1" />
+        <path d="M60 130 Q40 100 70 80" stroke="#cba8f0" stroke-width="6" fill="none" stroke-linecap="round" />
+        <path d="M260 130 Q280 100 250 80" stroke="#b8ebc9" stroke-width="6" fill="none" stroke-linecap="round" />
+        <text x="55" y="70" font-size="22" font-weight="700" fill="#653c97" font-family="Quicksand, sans-serif">한</text>
+        <text x="245" y="70" font-size="22" font-weight="700" fill="#368752" font-family="Quicksand, sans-serif">ES</text>
+      </svg>
+    </Fragment>
+  </StorySection>
+
+  <section class="py-16 sm:py-24">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <div class="text-center max-w-2xl mx-auto">
+        <span class="inline-block rounded-full bg-brand-100 px-4 py-1 text-xs font-700 uppercase tracking-wide text-brand-700">
+          🌟 지금 시작하기
+        </span>
+        <h2 class="font-heading mt-4 text-2xl sm:text-3xl font-800 text-neutral-900">
+          무료 자료 둘러보기
+        </h2>
+      </div>
+
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {pdfs.slice(0, 2).map((pdf) => (
+          <ResourceCard title={pdfContent(pdf, "ko").title} description={pdfContent(pdf, "ko").description} tag={pdfContent(pdf, "ko").tag} badge="무료">
+            <Fragment slot="action">
+              <a href={`/ko/recursos-pdf/${pdf.slug}/`} class="text-sm font-600 text-brand-600 hover:text-brand-700">
+                PDF 보기 💜
+              </a>
+            </Fragment>
+          </ResourceCard>
+        ))}
+        {contentItems.slice(0, 2).map((item) => (
+          <ResourceCard title={contentText(item, "ko").title} description={contentText(item, "ko").description} tag={contentText(item, "ko").tag} badge="무료">
+            <Fragment slot="action">
+              <a href="/ko/contenido/" class="text-sm font-600 text-brand-600 hover:text-brand-700">
+                콘텐츠 보기 →
+              </a>
+            </Fragment>
+          </ResourceCard>
+        ))}
+      </div>
+
+      <div class="mt-12 grid gap-8 md:grid-cols-2 md:items-center">
+        <NewsletterSignupUI lang="ko" />
+        <div class="rounded-2xl bg-gradient-to-br from-brand-600 to-brand-800 p-8 text-center md:text-left">
+          <h3 class="font-heading text-xl font-700 text-white">지금 시작해볼까요? 🌸</h3>
+          <p class="mt-2 text-sm text-brand-100">
+            모든 자료는 무료예요. 첫걸음만 내디디면 돼요 💫.
+          </p>
+          <div class="mt-5">
+            <CTAButton href="/ko/recursos-pdf/">모든 자료 보기 ✨</CTAButton>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
