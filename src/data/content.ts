@@ -1,85 +1,46 @@
-import type { Lang } from "../i18n/translations";
-
 export type Platform = "tiktok" | "youtube" | "instagram" | "spotify";
 
-interface ContentItemText {
-  title: string;
-  description: string;
-  tag: string;
-}
+export const platformLabels: Record<Platform, string> = {
+  tiktok: "TikTok",
+  youtube: "YouTube",
+  instagram: "Instagram",
+  spotify: "Spotify",
+};
 
-export interface ContentResource {
+// Colores de marca de cada plataforma (a propósito distintos de la paleta del
+// sitio, para que el logo se reconozca al instante).
+export const platformBadgeClass: Record<Platform, string> = {
+  tiktok: "bg-black text-white",
+  youtube: "bg-red-600 text-white",
+  instagram: "bg-gradient-to-tr from-amber-400 via-pink-500 to-purple-600 text-white",
+  spotify: "bg-[#1DB954] text-white",
+};
+
+export const platformIconPath: Record<Platform, string> = {
+  tiktok:
+    "M16.6 5.82c-1.02-.9-1.65-2.2-1.65-3.65h-3.13v14.02c0 1.61-1.3 2.91-2.9 2.91a2.91 2.91 0 01-2.91-2.91 2.91 2.91 0 012.91-2.91c.26 0 .5.03.74.09v-3.18a6.1 6.1 0 00-.74-.05 6.06 6.06 0 00-6.06 6.05A6.06 6.06 0 008.92 22a6.06 6.06 0 006.06-6.06V9.01a7.65 7.65 0 004.47 1.43V7.31c-.99 0-1.91-.32-2.65-.87a5.5 5.5 0 01-.2-.62z",
+  youtube:
+    "M21.6 7.2s-.2-1.5-.8-2.1c-.8-.8-1.7-.8-2.1-.9C15.9 4 12 4 12 4h0s-3.9 0-6.7.2c-.4 0-1.3.1-2.1.9-.6.6-.8 2.1-.8 2.1S2.2 9 2.2 10.7v1.6C2.2 14 2.4 15.8 2.4 15.8s.2 1.5.8 2.1c.8.8 1.8.8 2.3.9 1.7.2 6.5.2 6.5.2s3.9 0 6.7-.2c.4 0 1.3-.1 2.1-.9.6-.6.8-2.1.8-2.1s.2-1.8.2-3.5v-1.6c0-1.7-.2-3.5-.2-3.5zM9.9 14.6V8.9l5.4 2.9-5.4 2.8z",
+  instagram:
+    "M12 2c-2.7 0-3.06.01-4.12.06-1.06.05-1.79.22-2.43.47-.66.26-1.22.6-1.77 1.16-.56.55-.9 1.11-1.16 1.77-.25.64-.42 1.37-.47 2.43C2 8.94 2 9.3 2 12s.01 3.06.06 4.12c.05 1.06.22 1.79.47 2.43.26.66.6 1.22 1.16 1.77.55.56 1.11.9 1.77 1.16.64.25 1.37.42 2.43.47C8.94 22 9.3 22 12 22s3.06-.01 4.12-.06c1.06-.05 1.79-.22 2.43-.47.66-.26 1.22-.6 1.77-1.16.56-.55.9-1.11 1.16-1.77.25-.64.42-1.37.47-2.43.05-1.06.06-1.42.06-4.12s-.01-3.06-.06-4.12c-.05-1.06-.22-1.79-.47-2.43a4.9 4.9 0 00-1.16-1.77 4.9 4.9 0 00-1.77-1.16c-.64-.25-1.37-.42-2.43-.47C15.06 2.01 14.7 2 12 2zm0 1.8c2.65 0 2.97.01 4 .06.97.04 1.5.2 1.85.34.46.18.79.4 1.14.75.35.35.57.68.75 1.14.14.36.3.88.34 1.85.05 1.03.06 1.35.06 4s-.01 2.97-.06 4c-.04.97-.2 1.5-.34 1.85-.18.46-.4.79-.75 1.14-.35.35-.68.57-1.14.75-.36.14-.88.3-1.85.34-1.03.05-1.35.06-4 .06s-2.97-.01-4-.06c-.97-.04-1.5-.2-1.85-.34a3.1 3.1 0 01-1.14-.75 3.1 3.1 0 01-.75-1.14c-.14-.36-.3-.88-.34-1.85-.05-1.03-.06-1.35-.06-4s.01-2.97.06-4c.04-.97.2-1.5.34-1.85.18-.46.4-.79.75-1.14.35-.35.68-.57 1.14-.75.36-.14.88-.3 1.85-.34 1.03-.05 1.35-.06 4-.06zm0 3.05a5.15 5.15 0 100 10.3 5.15 5.15 0 000-10.3zm0 8.5a3.35 3.35 0 110-6.7 3.35 3.35 0 010 6.7zm5.35-8.7a1.2 1.2 0 11-2.4 0 1.2 1.2 0 012.4 0z",
+  spotify:
+    "M12 2a10 10 0 100 20 10 10 0 000-20zm4.59 14.42a.62.62 0 01-.86.21c-2.36-1.44-5.33-1.77-8.83-.97a.62.62 0 11-.28-1.22c3.83-.88 7.12-.5 9.76 1.12.3.18.4.57.21.86zm1.22-2.72a.78.78 0 01-1.07.26c-2.7-1.66-6.82-2.14-10.02-1.17a.78.78 0 01-.45-1.5c3.65-1.1 8.19-.57 11.28 1.34.37.23.49.72.26 1.07zm.11-2.83C14.6 9.05 9.5 8.88 6.55 9.8a.94.94 0 11-.55-1.8c3.39-1.05 9.03-.85 12.6 1.31a.94.94 0 01-.98 1.6z",
+};
+
+export interface SocialLink {
   platform: Platform;
-  // TODO: reemplazar por la URL real del post/video/episodio antes de publicar.
-  embedUrl: string;
-  // TODO: id real (YouTube video id / Spotify episode id). Sin esto el embed no carga.
-  embedId?: string;
-  es: ContentItemText;
-  ko: ContentItemText;
+  handle: string;
+  href: string;
 }
 
-// Contenido de ejemplo (placeholder). Reemplazar con posts reales de @ameliachoi00 antes de publicar.
-export const contentItems: ContentResource[] = [
-  {
-    platform: "tiktok",
-    embedUrl: "https://www.tiktok.com/@ameliachoi00/video/REEMPLAZAR_ID",
-    es: {
-      title: "Cómo se saluda en coreano (con acento de Seúl)",
-      description: "Un video corto para aprender a saludar como una persona local.",
-      tag: "Pronunciación",
-    },
-    ko: {
-      title: "서울 억양으로 한국어 인사하기",
-      description: "현지인처럼 인사하는 법을 배우는 짧은 영상이에요.",
-      tag: "발음",
-    },
-  },
-  {
-    platform: "youtube",
-    embedUrl: "https://www.youtube.com/watch?v=REEMPLAZAR_ID",
-    embedId: "REEMPLAZAR_ID",
-    es: {
-      title: "Hola Coreano — Episodio 1",
-      description: "Primer episodio del podcast de exposición diaria al coreano.",
-      tag: "Podcast",
-    },
-    ko: {
-      title: "Hola Coreano — 1화",
-      description: "매일 한국어에 노출되는 팟캐스트의 첫 번째 에피소드예요.",
-      tag: "팟캐스트",
-    },
-  },
-  {
-    platform: "instagram",
-    embedUrl: "https://www.instagram.com/p/REEMPLAZAR_ID/",
-    es: {
-      title: "3 errores comunes de hispanohablantes al hablar coreano",
-      description: "Los errores más frecuentes que veo entre mis seguidores hispanohablantes.",
-      tag: "Reel",
-    },
-    ko: {
-      title: "스페인어권 학습자가 자주 하는 한국어 실수 3가지",
-      description: "제 팔로워들에게서 가장 자주 보이는 실수들을 모았어요.",
-      tag: "릴스",
-    },
-  },
+// Enlaces reales a los perfiles (no a posts específicos).
+export const socialLinks: SocialLink[] = [
+  { platform: "tiktok", handle: "ameliachoi00", href: "https://www.tiktok.com/@ameliachoi00" },
+  { platform: "youtube", handle: "ameliachoi00", href: "https://www.youtube.com/@ameliachoi00" },
+  { platform: "instagram", handle: "ameliachoi00", href: "https://www.instagram.com/ameliachoi00/" },
   {
     platform: "spotify",
-    embedUrl: "https://open.spotify.com/episode/REEMPLAZAR_ID",
-    embedId: "REEMPLAZAR_ID",
-    es: {
-      title: "Hola Coreano — Episodio 1 (audio)",
-      description: "La versión en podcast de audio, para escuchar mientras haces otras cosas.",
-      tag: "Podcast",
-    },
-    ko: {
-      title: "Hola Coreano — 1화 (오디오)",
-      description: "다른 일을 하면서 들을 수 있는 오디오 팟캐스트 버전이에요.",
-      tag: "팟캐스트",
-    },
+    handle: "Hola Coreano",
+    href: "https://open.spotify.com/show/033IoaCfLsgtA1BrkFM7CP?si=cb4a5d4c06e34f06",
   },
 ];
-
-export function contentText(item: ContentResource, lang: Lang): ContentItemText {
-  return item[lang];
-}

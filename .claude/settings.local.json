@@ -14,7 +14,14 @@
       "Bash(mkdir -p public/images)",
       "Bash(python3 -)",
       "Bash(python -)",
-      "Bash(git init *)"
+      "Bash(git init *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git config *)",
+      "mcp__github__get_file_contents",
+      "Bash(git remote *)",
+      "Bash(git branch *)",
+      "Bash(git push *)",
+      "mcp__github__list_commits"
     ]
   }
 }

@@ -1,15 +1,15 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import AdSlot from "../../components/AdSlot.astro";
-import EmbedCard from "../../components/EmbedCard.astro";
-import { contentItems, contentText } from "../../data/content";
+import ContentCard from "../../components/ContentCard.astro";
+import { socialLinks } from "../../data/content";
 
 const description =
-  "amelinita의 TikTok, YouTube, Instagram, Spotify를 한곳에서 — 스페인어권을 위한 무료 한국어 콘텐츠.";
+  "amelinita의 TikTok, YouTube, Instagram, Spotify를 팔로우하세요 — 스페인어권을 위한 무료 한국어 콘텐츠.";
 ---
 
 <BaseLayout
-  title="한국어 학습 콘텐츠"
+  title="소셜 미디어 팔로우하기"
   description={description}
   path="/ko/contenido/"
   lang="ko"
@@ -20,11 +20,10 @@ const description =
         TikTok · YouTube · Instagram · Spotify
       </span>
       <h1 class="font-heading mt-4 text-3xl sm:text-4xl font-800 text-neutral-900">
-        제 모든 콘텐츠를 한곳에서 🎧
+        어디서든 팔로우하세요 🎧
       </h1>
       <p class="mt-4 text-neutral-600">
-        매일 조금씩 한국어를 연습할 수 있도록 고른 클립, 에피소드, 릴스예요. 각 카드는
-        재생 버튼을 눌러야 실제 영상/오디오가 로드돼서, 페이지가 느려지지 않아요.
+        매일 조금씩 한국어를 연습할 수 있는 모든 콘텐츠예요.
       </p>
     </div>
   </section>
@@ -32,17 +31,9 @@ const description =
   <div class="mx-auto max-w-6xl px-4 sm:px-6">
     <AdSlot position="post-intro" sizeLabel="728x90 / responsive" lang="ko" />
 
-    <div class="mx-auto grid max-w-3xl gap-6 py-8 sm:grid-cols-2">
-      {contentItems.map((item) => (
-        <EmbedCard
-          platform={item.platform}
-          embedUrl={item.embedUrl}
-          embedId={item.embedId}
-          title={contentText(item, "ko").title}
-          description={contentText(item, "ko").description}
-          tag={contentText(item, "ko").tag}
-          lang="ko"
-        />
+    <div class="mx-auto grid max-w-2xl grid-cols-2 gap-6 py-8 sm:grid-cols-4">
+      {socialLinks.map((social) => (
+        <ContentCard platform={social.platform} handle={social.handle} href={social.href} />
       ))}
     </div>
 

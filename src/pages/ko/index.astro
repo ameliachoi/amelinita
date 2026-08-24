@@ -7,7 +7,6 @@ import ResourceCard from "../../components/ResourceCard.astro";
 import NewsletterSignupUI from "../../components/NewsletterSignupUI.astro";
 import CTAButton from "../../components/CTAButton.astro";
 import { pdfs, pdfContent } from "../../data/pdfs";
-import { contentItems, contentText } from "../../data/content";
 
 const description =
   "스페인어권 학습자를 위한 무료 한국어 학습 자료. PDF, 영상, 그리고 amelinita가 직접 만든 콘텐츠를 만나보세요.";
@@ -172,20 +171,11 @@ const description =
       </div>
 
       <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {pdfs.slice(0, 2).map((pdf) => (
+        {pdfs.map((pdf) => (
           <ResourceCard title={pdfContent(pdf, "ko").title} description={pdfContent(pdf, "ko").description} tag={pdfContent(pdf, "ko").tag} badge="무료">
             <Fragment slot="action">
               <a href={`/ko/recursos-pdf/${pdf.slug}/`} class="text-sm font-600 text-brand-600 hover:text-brand-700">
                 PDF 보기 💜
-              </a>
-            </Fragment>
-          </ResourceCard>
-        ))}
-        {contentItems.slice(0, 2).map((item) => (
-          <ResourceCard title={contentText(item, "ko").title} description={contentText(item, "ko").description} tag={contentText(item, "ko").tag} badge="무료">
-            <Fragment slot="action">
-              <a href="/ko/contenido/" class="text-sm font-600 text-brand-600 hover:text-brand-700">
-                콘텐츠 보기 →
               </a>
             </Fragment>
           </ResourceCard>
@@ -199,8 +189,9 @@ const description =
           <p class="mt-2 text-sm text-brand-100">
             모든 자료는 무료예요. 첫걸음만 내디디면 돼요 💫.
           </p>
-          <div class="mt-5">
+          <div class="mt-5 flex flex-wrap justify-center gap-3 md:justify-start">
             <CTAButton href="/ko/recursos-pdf/">모든 자료 보기 ✨</CTAButton>
+            <CTAButton href="/ko/contenido/" variant="outline">팔로우하기 🎧</CTAButton>
           </div>
         </div>
       </div>

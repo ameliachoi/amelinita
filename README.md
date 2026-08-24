@@ -9,8 +9,8 @@ Construido con [Astro](https://astro.build) + Tailwind CSS, optimizado para SEO 
 - `/` — Home (storytelling)
 - `/sobre-mi/` — Sobre Amelia / amelinita
 - `/recursos-pdf/` — PDFs gratuitos
-- `/videos/` — Videos (TikTok/YouTube)
-- `/contacto/` — Contacto
+- `/contenido/` — TikTok, YouTube, Instagram, Spotify (enlaces directos, sin embeds)
+- Cada página también existe en `/ko/...` (versión en coreano)
 
 ## Comandos
 
@@ -42,10 +42,10 @@ y adjunta el archivo o el link de descarga en el email automático.
 
 Ver `.claude/plans/tidy-sprouting-avalanche.md` para la lista completa. Resumen:
 
-- Reemplazar contenido placeholder de `src/data/pdfs.ts` y `src/data/videos.ts` con recursos reales
+- Reemplazar contenido placeholder de `src/data/pdfs.ts` y `src/data/content.ts` con recursos reales
+  (en `content.ts`, reemplazar los `REEMPLAZAR_ID` por las URLs reales de cada post)
 - Subir los PDFs reales a `public/downloads/` (o a Beehiiv) y actualizar `fileUrl` en `src/data/pdfs.ts`
 - Conectar dominio real y actualizar `site` en `astro.config.mjs` + `public/robots.txt`
 - Solicitar Google AdSense (una vez el sitio esté en vivo) y reemplazar los `<AdSlot />` por el código real
 - Configurar `BEEHIIV_PUBLICATION_ID` / `BEEHIIV_API_KEY` (ver arriba)
-- Conectar un backend de formularios para la página de contacto
 - Exportar `public/og-image.svg` a PNG/JPG real

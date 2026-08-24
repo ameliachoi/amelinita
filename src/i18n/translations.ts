@@ -10,7 +10,6 @@ export const ui = {
     "nav.sobreMi": "Sobre mí",
     "nav.pdf": "Recursos PDF",
     "nav.contenido": "Contenido",
-    "nav.contacto": "Contacto",
 
     "footer.tagline":
       "Recursos gratuitos de coreano para hispanohablantes, creados con cariño por una coreana que también está aprendiendo español 💜.",
@@ -44,17 +43,7 @@ export const ui = {
     "newsletter.submit": "Suscribirme ✨",
     "newsletter.success": "¡Listo! Revisa tu correo para confirmar 💜.",
 
-    "content.play": "Reproducir",
-    "content.openIn": "Abrir en",
-
-    "contact.nameLabel": "Nombre",
-    "contact.namePlaceholder": "Tu nombre",
-    "contact.messageLabel": "Mensaje",
-    "contact.messagePlaceholder": "Cuéntame en qué puedo ayudarte...",
-    "contact.submit": "Enviar mensaje 💌",
-    "contact.submitting": "Enviando...",
-    "contact.success": "¡Mensaje enviado! Te responderé pronto.",
-    "contact.fillAll": "Completa todos los campos con un correo válido.",
+    "content.viewOn": "Ver en",
 
     "lang.switchTo": "한국어로 보기",
   },
@@ -62,7 +51,6 @@ export const ui = {
     "nav.sobreMi": "소개",
     "nav.pdf": "PDF 자료",
     "nav.contenido": "콘텐츠",
-    "nav.contacto": "문의하기",
 
     "footer.tagline": "스페인어를 공부하는 한국인이 정성껏 만든, 스페인어권을 위한 무료 한국어 학습 자료 💜.",
     "footer.explore": "메뉴",
@@ -95,17 +83,7 @@ export const ui = {
     "newsletter.submit": "구독하기 ✨",
     "newsletter.success": "완료! 이메일을 확인해주세요 💜.",
 
-    "content.play": "재생하기",
-    "content.openIn": "에서 보기:",
-
-    "contact.nameLabel": "이름",
-    "contact.namePlaceholder": "이름을 입력해주세요",
-    "contact.messageLabel": "메시지",
-    "contact.messagePlaceholder": "어떤 걸 도와드릴까요?",
-    "contact.submit": "메시지 보내기 💌",
-    "contact.submitting": "전송 중...",
-    "contact.success": "메시지가 전송됐어요! 곧 답장드릴게요.",
-    "contact.fillAll": "올바른 이메일과 함께 모든 항목을 입력해주세요.",
+    "content.viewOn": "에서 보기",
 
     "lang.switchTo": "Ver en español",
   },

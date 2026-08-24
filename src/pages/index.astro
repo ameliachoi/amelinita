@@ -7,7 +7,6 @@ import ResourceCard from "../components/ResourceCard.astro";
 import NewsletterSignupUI from "../components/NewsletterSignupUI.astro";
 import CTAButton from "../components/CTAButton.astro";
 import { pdfs, pdfContent } from "../data/pdfs";
-import { contentItems, contentText } from "../data/content";
 
 const description =
   "Aprende coreano gratis en español. PDFs, videos y recursos creados por amelinita, coreana y profesora de idiomas, especialmente para hispanohablantes.";
@@ -116,20 +115,11 @@ const description =
       </div>
 
       <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {pdfs.slice(0, 2).map((pdf) => (
+        {pdfs.map((pdf) => (
           <ResourceCard title={pdfContent(pdf, "es").title} description={pdfContent(pdf, "es").description} tag={pdfContent(pdf, "es").tag}>
             <Fragment slot="action">
               <a href={`/recursos-pdf/${pdf.slug}/`} class="text-sm font-600 text-brand-600 hover:text-brand-700">
                 Ver PDF →
-              </a>
-            </Fragment>
-          </ResourceCard>
-        ))}
-        {contentItems.slice(0, 2).map((item) => (
-          <ResourceCard title={contentText(item, "es").title} description={contentText(item, "es").description} tag={contentText(item, "es").tag}>
-            <Fragment slot="action">
-              <a href="/contenido/" class="text-sm font-600 text-brand-600 hover:text-brand-700">
-                Ver contenido →
               </a>
             </Fragment>
           </ResourceCard>
@@ -143,8 +133,9 @@ const description =
           <p class="mt-2 text-sm text-brand-100">
             Todos los recursos son gratuitos. Solo tienes que dar el primer paso 💫.
           </p>
-          <div class="mt-5">
+          <div class="mt-5 flex flex-wrap justify-center gap-3 md:justify-start">
             <CTAButton href="/recursos-pdf/">Ver todos los recursos ✨</CTAButton>
+            <CTAButton href="/contenido/" variant="outline">Sígueme 🎧</CTAButton>
           </div>
         </div>
       </div>
