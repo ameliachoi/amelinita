@@ -8,7 +8,6 @@ import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
-  // TODO: reemplazar por el dominio real antes de desplegar (afecta sitemap.xml y canonical URLs)
   site: 'https://amelinita.com',
 
   vite: {
