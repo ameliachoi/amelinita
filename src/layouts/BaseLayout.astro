@@ -4,6 +4,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import LanguageSwitcher from "../components/LanguageSwitcher.astro";
 import { getAlternateLangPath, type Lang } from "../i18n/translations";
+import SpeedInsights from "@vercel/speed-insights/astro";
 
 interface Props {
   title: string;
@@ -87,5 +88,6 @@ const jsonLdBlocks = [websiteJsonLd, ...(jsonLd ? (Array.isArray(jsonLd) ? jsonL
     </main>
     <Footer lang={lang} />
     <LanguageSwitcher lang={lang} currentPath={path} />
+    <SpeedInsights />
   </body>
 </html>
