@@ -44,6 +44,8 @@ const websiteJsonLd = {
 };
 
 const jsonLdBlocks = [websiteJsonLd, ...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [])];
+
+const adsenseClientId = import.meta.env.PUBLIC_ADSENSE_CLIENT_ID;
 ---
 
 <!doctype html>
@@ -79,6 +81,14 @@ const jsonLdBlocks = [websiteJsonLd, ...(jsonLd ? (Array.isArray(jsonLd) ? jsonL
     {jsonLdBlocks.map((block) => (
       <script type="application/ld+json" set:html={JSON.stringify(block)} />
     ))}
+
+    {adsenseClientId && (
+      <script
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClientId}`}
+        crossorigin="anonymous"
+      ></script>
+    )}
   </head>
   <body class="bg-white text-neutral-900 antialiased">
     <Header lang={lang} />

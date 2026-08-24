@@ -1,0 +1,101 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const description =
+  "Qué datos recoge amelinita.com, para qué se usan y cómo puedes ejercer tus derechos sobre ellos.";
+const lastUpdated = "24 de agosto de 2026";
+---
+
+<BaseLayout title="Política de privacidad" description={description} path="/politica-de-privacidad/">
+  <article class="mx-auto max-w-3xl px-4 sm:px-6 py-16 sm:py-20">
+    <h1 class="font-heading text-3xl sm:text-4xl font-800 text-neutral-900">Política de privacidad</h1>
+    <p class="mt-2 text-sm text-neutral-400">Última actualización: {lastUpdated}</p>
+
+    <div class="prose-custom mt-10 space-y-8 text-neutral-700 leading-relaxed">
+      <section>
+        <h2 class="font-heading text-xl font-700 text-neutral-900">Quién soy</h2>
+        <p class="mt-2">
+          amelinita.com es un sitio personal creado por Amelia Choi ("yo", "amelinita"), donde
+          comparto recursos gratuitos para aprender coreano dirigidos a hispanohablantes. Esta
+          política explica qué datos recojo cuando visitas el sitio y cómo los uso.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-heading text-xl font-700 text-neutral-900">Qué datos recojo</h2>
+        <ul class="mt-2 list-disc space-y-2 pl-5">
+          <li>
+            <strong>Correo electrónico:</strong> si te suscribes al newsletter o solicitas un PDF
+            gratuito, te pido tu correo electrónico. Se guarda en
+            <a href="https://www.beehiiv.com" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">Beehiiv</a>,
+            la plataforma que uso para gestionar suscripciones y enviar correos.
+          </li>
+          <li>
+            <strong>Datos de navegación:</strong> como cualquier sitio web, el hosting
+            (<a href="https://vercel.com" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">Vercel</a>)
+            registra automáticamente información técnica básica (dirección IP, tipo de navegador,
+            páginas visitadas) con fines de seguridad y rendimiento.
+          </li>
+          <li>
+            <strong>Cookies publicitarias:</strong> este sitio muestra anuncios a través de Google
+            AdSense. Google y sus socios pueden usar cookies para mostrarte anuncios relevantes
+            según tus visitas a este y otros sitios. Puedes gestionar tus preferencias en la
+            <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline">Configuración de anuncios de Google</a>.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="font-heading text-xl font-700 text-neutral-900">Para qué uso tus datos</h2>
+        <ul class="mt-2 list-disc space-y-2 pl-5">
+          <li>Enviarte el PDF que solicitaste</li>
+          <li>Enviarte el newsletter con nuevos recursos (solo si te suscribiste)</li>
+          <li>Mantener el sitio funcionando de forma segura</li>
+          <li>Mostrar anuncios</li>
+        </ul>
+        <p class="mt-3">
+          No vendo tu correo electrónico ni lo comparto con terceros, salvo con Beehiiv (para
+          enviarte los correos) y Google (para los anuncios), como se describe arriba.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-heading text-xl font-700 text-neutral-900">Tus derechos</h2>
+        <ul class="mt-2 list-disc space-y-2 pl-5">
+          <li>Puedes darte de baja del newsletter en cualquier momento con el enlace de cada correo.</li>
+          <li>Puedes pedirme que elimine tu correo de mi lista escribiéndome a hola@amelinita.com.</li>
+          <li>
+            Si vives en la Unión Europea, el Reino Unido u otra región con leyes de protección de
+            datos (como el RGPD), tienes derecho a acceder, corregir o eliminar tus datos
+            personales.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="font-heading text-xl font-700 text-neutral-900">Terceros que uso</h2>
+        <ul class="mt-2 list-disc space-y-2 pl-5">
+          <li>Beehiiv — gestión de correo y newsletter</li>
+          <li>Google AdSense — anuncios</li>
+          <li>Vercel — hosting</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="font-heading text-xl font-700 text-neutral-900">Cambios en esta política</h2>
+        <p class="mt-2">
+          Puedo actualizar esta política de vez en cuando. Si hago cambios importantes,
+          actualizaré la fecha al inicio de esta página.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-heading text-xl font-700 text-neutral-900">Contacto</h2>
+        <p class="mt-2">
+          Si tienes preguntas sobre esta política o tus datos, escríbeme a
+          <a href="mailto:hola@amelinita.com" class="text-brand-600 hover:underline">hola@amelinita.com</a>.
+        </p>
+      </section>
+    </div>
+  </article>
+</BaseLayout>

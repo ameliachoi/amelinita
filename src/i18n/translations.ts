@@ -16,6 +16,7 @@ export const ui = {
     "footer.explore": "Explora",
     "footer.follow": "Sígueme",
     "footer.rights": "Todos los derechos reservados.",
+    "footer.privacy": "Política de privacidad",
 
     "badge.free": "Gratis",
 
@@ -56,6 +57,7 @@ export const ui = {
     "footer.explore": "메뉴",
     "footer.follow": "팔로우하기",
     "footer.rights": "All rights reserved.",
+    "footer.privacy": "개인정보처리방침",
 
     "badge.free": "무료",
 
