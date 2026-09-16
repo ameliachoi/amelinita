@@ -39,11 +39,26 @@ const secondHalf = pdfs.slice(half);
 
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 py-4">
       {firstHalf.map((pdf) => (
-        <ResourceCard title={pdfContent(pdf, "ko").title} description={pdfContent(pdf, "ko").description} tag={pdfContent(pdf, "ko").tag} badge="무료">
+        <ResourceCard
+          title={pdfContent(pdf, "ko").title}
+          description={pdfContent(pdf, "ko").description}
+          tag={pdfContent(pdf, "ko").tag}
+          badge={pdf.comingSoon ? "준비중" : "무료"}
+          disabled={pdf.comingSoon}
+        >
           <Fragment slot="action">
-            <a href={`/ko/recursos-pdf/${pdf.slug}/`} class="text-sm font-600 text-brand-600 hover:text-brand-700">
-              보고 다운로드하기 💜
-            </a>
+            {pdf.comingSoon ? (
+              <span class="text-sm font-600 text-neutral-400">준비중</span>
+            ) : (
+              <a
+                href={pdf.directUrl ?? `/ko/recursos-pdf/${pdf.slug}/`}
+                target={pdf.directUrl ? "_blank" : undefined}
+                rel={pdf.directUrl ? "noopener noreferrer" : undefined}
+                class="text-sm font-600 text-brand-600 hover:text-brand-700"
+              >
+                보고 다운로드하기 💜
+              </a>
+            )}
           </Fragment>
         </ResourceCard>
       ))}
@@ -55,11 +70,26 @@ const secondHalf = pdfs.slice(half);
 
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 py-4">
           {secondHalf.map((pdf) => (
-            <ResourceCard title={pdfContent(pdf, "ko").title} description={pdfContent(pdf, "ko").description} tag={pdfContent(pdf, "ko").tag} badge="무료">
+            <ResourceCard
+              title={pdfContent(pdf, "ko").title}
+              description={pdfContent(pdf, "ko").description}
+              tag={pdfContent(pdf, "ko").tag}
+              badge={pdf.comingSoon ? "준비중" : "무료"}
+              disabled={pdf.comingSoon}
+            >
               <Fragment slot="action">
-                <a href={`/ko/recursos-pdf/${pdf.slug}/`} class="text-sm font-600 text-brand-600 hover:text-brand-700">
-                  보고 다운로드하기 💜
-                </a>
+                {pdf.comingSoon ? (
+                  <span class="text-sm font-600 text-neutral-400">준비중</span>
+                ) : (
+                  <a
+                    href={pdf.directUrl ?? `/ko/recursos-pdf/${pdf.slug}/`}
+                    target={pdf.directUrl ? "_blank" : undefined}
+                    rel={pdf.directUrl ? "noopener noreferrer" : undefined}
+                    class="text-sm font-600 text-brand-600 hover:text-brand-700"
+                  >
+                    보고 다운로드하기 💜
+                  </a>
+                )}
               </Fragment>
             </ResourceCard>
           ))}

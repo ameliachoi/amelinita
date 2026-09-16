@@ -3,10 +3,8 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/Hero.astro";
 import StorySection from "../../components/StorySection.astro";
 import FeatureCard from "../../components/FeatureCard.astro";
-import ResourceCard from "../../components/ResourceCard.astro";
 import NewsletterSignupUI from "../../components/NewsletterSignupUI.astro";
 import CTAButton from "../../components/CTAButton.astro";
-import { pdfs, pdfContent } from "../../data/pdfs";
 
 const description =
   "스페인어권 학습자를 위한 한국어 학습 자료. 무료 PDF와 콘텐츠부터 amelinita의 가이드 프로그램까지 만나보세요.";
@@ -100,24 +98,34 @@ const description =
 
     <div class="mx-auto -mt-6 max-w-6xl px-4 sm:px-6 pb-16 sm:pb-24">
       <div class="grid gap-6 sm:grid-cols-3">
-        <FeatureCard
-          icon="book"
-          title="📚 다운로드 가능한 PDF"
-          description="가이드, 어휘, 문법을 스페인어로 설명한 자료예요. 인쇄하거나 휴대폰으로 바로 볼 수 있어요."
-          accent="brand"
-        />
-        <FeatureCard
-          icon="target"
-          title="🎧 짧은 콘텐츠"
-          description="TikTok, YouTube, Instagram, Spotify까지 — 부담 없이 매일 조금씩 연습할 수 있어요."
-          accent="accent"
-        />
-        <FeatureCard
-          icon="globe"
-          title="💜 스페인어권 커뮤니티"
-          description="라틴아메리카 전역의 수많은 스페인어권 학습자들이 저와 함께 한국어를 공부하고 있어요."
-          accent="brand"
-        />
+        <a href="/ko/recursos-pdf/" class="block h-full rounded-2xl transition-transform hover:-translate-y-1">
+          <FeatureCard
+            icon="book"
+            title="📚 다운로드 가능한 PDF"
+            description="가이드, 어휘, 문법을 스페인어로 설명한 자료예요. 인쇄하거나 휴대폰으로 바로 볼 수 있어요."
+            accent="brand"
+          />
+        </a>
+        <a href="/ko/contenido/" class="block h-full rounded-2xl transition-transform hover:-translate-y-1">
+          <FeatureCard
+            icon="target"
+            title="🎧 짧은 콘텐츠"
+            description="TikTok, YouTube, Instagram, Spotify까지 — 부담 없이 매일 조금씩 연습할 수 있어요."
+            accent="accent"
+          />
+        </a>
+        <button
+          type="button"
+          class="block h-full w-full text-left rounded-2xl transition-transform hover:-translate-y-1"
+          onclick="alert('아직 준비중입니다. 준비가 완료되면 곧 업데이트할게요!')"
+        >
+          <FeatureCard
+            icon="globe"
+            title="💜 스페인어권 커뮤니티"
+            description="라틴아메리카 전역의 수많은 스페인어권 학습자들이 저와 함께 한국어를 공부하고 있어요."
+            accent="brand"
+          />
+        </button>
       </div>
     </div>
   </section>
@@ -161,28 +169,7 @@ const description =
 
   <section class="py-16 sm:py-24">
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
-      <div class="text-center max-w-2xl mx-auto">
-        <span class="inline-block rounded-full bg-brand-100 px-4 py-1 text-xs font-700 uppercase tracking-wide text-brand-700">
-          🌟 지금 시작하기
-        </span>
-        <h2 class="font-heading mt-4 text-2xl sm:text-3xl font-800 text-neutral-900">
-          무료 자료 둘러보기
-        </h2>
-      </div>
-
-      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {pdfs.map((pdf) => (
-          <ResourceCard title={pdfContent(pdf, "ko").title} description={pdfContent(pdf, "ko").description} tag={pdfContent(pdf, "ko").tag} badge="무료">
-            <Fragment slot="action">
-              <a href={`/ko/recursos-pdf/${pdf.slug}/`} class="text-sm font-600 text-brand-600 hover:text-brand-700">
-                PDF 보기 💜
-              </a>
-            </Fragment>
-          </ResourceCard>
-        ))}
-      </div>
-
-      <div class="mt-12 grid gap-8 md:grid-cols-2 md:items-center">
+      <div class="grid gap-8 md:grid-cols-2 md:items-center">
         <NewsletterSignupUI />
         <div class="rounded-2xl bg-gradient-to-br from-brand-600 to-brand-800 p-8 text-center md:text-left">
           <h3 class="font-heading text-xl font-700 text-white">지금 시작해볼까요? 🌸</h3>

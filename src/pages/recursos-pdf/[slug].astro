@@ -5,10 +5,13 @@ import EmailGateModal from "../../components/EmailGateModal.astro";
 import { pdfs, pdfContent } from "../../data/pdfs";
 
 export function getStaticPaths() {
-  return pdfs.map((pdf) => ({
-    params: { slug: pdf.slug },
-    props: { pdf },
-  }));
+  // Solo los recursos con email-gate (sin "comingSoon" ni "directUrl") tienen página de detalle.
+  return pdfs
+    .filter((pdf) => !pdf.comingSoon && !pdf.directUrl)
+    .map((pdf) => ({
+      params: { slug: pdf.slug },
+      props: { pdf },
+    }));
 }
 
 const { pdf } = Astro.props;

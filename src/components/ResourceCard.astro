@@ -4,15 +4,28 @@ interface Props {
   description: string;
   tag: string;
   badge?: string;
+  disabled?: boolean;
 }
 
-const { title, description, tag, badge = "Gratis" } = Astro.props;
+const { title, description, tag, badge = "Gratis", disabled = false } = Astro.props;
 ---
 
-<article class="flex flex-col rounded-2xl bg-white p-6 shadow-sm ring-1 ring-neutral-100 transition-shadow hover:shadow-md">
+<article
+  class:list={[
+    "flex flex-col rounded-2xl bg-white p-6 ring-1 ring-neutral-100 transition-shadow",
+    disabled ? "opacity-60" : "shadow-sm hover:shadow-md",
+  ]}
+>
   <div class="flex items-center justify-between">
     <span class="rounded-full bg-brand-50 px-3 py-1 text-xs font-600 text-brand-700">{tag}</span>
-    <span class="rounded-full bg-accent-100 px-3 py-1 text-xs font-700 text-accent-700">{badge}</span>
+    <span
+      class:list={[
+        "rounded-full px-3 py-1 text-xs font-700",
+        disabled ? "bg-neutral-100 text-neutral-500" : "bg-accent-100 text-accent-700",
+      ]}
+    >
+      {badge}
+    </span>
   </div>
   <h3 class="font-heading mt-4 text-lg font-700 text-neutral-900">{title}</h3>
   <p class="mt-2 flex-1 text-sm text-neutral-500">{description}</p>

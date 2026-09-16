@@ -38,11 +38,26 @@ const secondHalf = pdfs.slice(half);
 
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 py-4">
       {firstHalf.map((pdf) => (
-        <ResourceCard title={pdfContent(pdf, "es").title} description={pdfContent(pdf, "es").description} tag={pdfContent(pdf, "es").tag}>
+        <ResourceCard
+          title={pdfContent(pdf, "es").title}
+          description={pdfContent(pdf, "es").description}
+          tag={pdfContent(pdf, "es").tag}
+          badge={pdf.comingSoon ? "Próximamente" : "Gratis"}
+          disabled={pdf.comingSoon}
+        >
           <Fragment slot="action">
-            <a href={`/recursos-pdf/${pdf.slug}/`} class="text-sm font-600 text-brand-600 hover:text-brand-700">
-              Ver y descargar 💜
-            </a>
+            {pdf.comingSoon ? (
+              <span class="text-sm font-600 text-neutral-400">Próximamente</span>
+            ) : (
+              <a
+                href={pdf.directUrl ?? `/recursos-pdf/${pdf.slug}/`}
+                target={pdf.directUrl ? "_blank" : undefined}
+                rel={pdf.directUrl ? "noopener noreferrer" : undefined}
+                class="text-sm font-600 text-brand-600 hover:text-brand-700"
+              >
+                Ver y descargar 💜
+              </a>
+            )}
           </Fragment>
         </ResourceCard>
       ))}
@@ -54,11 +69,26 @@ const secondHalf = pdfs.slice(half);
 
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 py-4">
           {secondHalf.map((pdf) => (
-            <ResourceCard title={pdfContent(pdf, "es").title} description={pdfContent(pdf, "es").description} tag={pdfContent(pdf, "es").tag}>
+            <ResourceCard
+              title={pdfContent(pdf, "es").title}
+              description={pdfContent(pdf, "es").description}
+              tag={pdfContent(pdf, "es").tag}
+              badge={pdf.comingSoon ? "Próximamente" : "Gratis"}
+              disabled={pdf.comingSoon}
+            >
               <Fragment slot="action">
-                <a href={`/recursos-pdf/${pdf.slug}/`} class="text-sm font-600 text-brand-600 hover:text-brand-700">
-                  Ver y descargar 💜
-                </a>
+                {pdf.comingSoon ? (
+                  <span class="text-sm font-600 text-neutral-400">Próximamente</span>
+                ) : (
+                  <a
+                    href={pdf.directUrl ?? `/recursos-pdf/${pdf.slug}/`}
+                    target={pdf.directUrl ? "_blank" : undefined}
+                    rel={pdf.directUrl ? "noopener noreferrer" : undefined}
+                    class="text-sm font-600 text-brand-600 hover:text-brand-700"
+                  >
+                    Ver y descargar 💜
+                  </a>
+                )}
               </Fragment>
             </ResourceCard>
           ))}
