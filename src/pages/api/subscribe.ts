@@ -18,41 +18,31 @@ export const POST: APIRoute = async ({ request }) => {
     return json({ error: "Escribe un correo electrónico válido." }, 400);
   }
 
-  const apiKey = import.meta.env.BEEHIIV_API_KEY;
-  const publicationId = import.meta.env.BEEHIIV_PUBLICATION_ID;
+  const apiKey = import.meta.env.KIT_API_KEY;
+  const formId = import.meta.env.KIT_FORM_ID;
 
-  if (!apiKey || !publicationId) {
-    // Beehiiv todavía no está configurado (faltan BEEHIIV_API_KEY / BEEHIIV_PUBLICATION_ID
-    // en las variables de entorno). Ver README para instrucciones.
+  if (!apiKey || !formId) {
+    // Kit todavía no está configurado (faltan KIT_API_KEY / KIT_FORM_ID en las
+    // variables de entorno). Ver README para instrucciones.
     return json(
       { error: "El registro de correo aún no está activado en este sitio. Inténtalo más tarde." },
       503
     );
   }
 
-  const beehiivRes = await fetch(
-    `https://api.beehiiv.com/v2/publications/${publicationId}/subscriptions`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
-        email,
-        reactivate_existing: false,
-        send_welcome_email: true,
-        utm_source: "amelinita-web",
-        utm_medium: body.pdfSlug ? "pdf-lead-magnet" : "newsletter-form",
-        utm_campaign: body.pdfSlug ?? body.source ?? "newsletter",
-        custom_fields: body.pdfTitle
-          ? [{ name: "pdf_solicitado", value: body.pdfTitle }]
-          : undefined,
-      }),
-    }
-  );
+  const kitRes = await fetch(`https://api.kit.com/v4/forms/${formId}/subscribers`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Kit-Api-Key": apiKey,
+    },
+    body: JSON.stringify({
+      email_address: email,
+      fields: body.pdfTitle ? { pdf_solicitado: body.pdfTitle } : undefined,
+    }),
+  });
 
-  if (!beehiivRes.ok) {
+  if (!kitRes.ok) {
     return json({ error: "No pudimos registrar tu correo. Inténtalo de nuevo." }, 502);
   }
 

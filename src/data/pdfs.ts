@@ -9,7 +9,7 @@ interface PdfContent {
 
 export interface PdfResource {
   slug: string;
-  // TODO: reemplazar por la URL real del archivo (hosting propio, Beehiiv, etc.) antes de publicar.
+  // TODO: reemplazar por la URL real del archivo (hosting propio, Kit, etc.) antes de publicar.
   fileUrl: string;
   es: PdfContent;
   ko: PdfContent;

@@ -1,7 +1,7 @@
 ---
 // Modal de "email a cambio del PDF" (lead magnet).
-// Envía el correo a /api/subscribe, que lo registra en Beehiiv.
-// Requiere las variables de entorno BEEHIIV_API_KEY y BEEHIIV_PUBLICATION_ID
+// Envía el correo a /api/subscribe, que lo registra en Kit.
+// Requiere las variables de entorno KIT_API_KEY y KIT_FORM_ID
 // (ver README) — sin ellas, /api/subscribe responde 503 y el modal muestra un error.
 import { useTranslations, type Lang } from "../i18n/translations";
 
@@ -133,7 +133,7 @@ const descargaPath = lang === "ko" ? "/ko/recursos-pdf/descarga/" : "/recursos-p
       }
 
       // Datos para mostrar en la página de descarga (no es persistencia real,
-      // el correo ya quedó guardado del lado de Beehiiv en el paso anterior).
+      // el correo ya quedó guardado del lado de Kit en el paso anterior).
       sessionStorage.setItem(
         "pdfDownloadRequest",
         JSON.stringify({ title: pdfTitle, fileUrl, email })
