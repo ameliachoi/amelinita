@@ -89,6 +89,15 @@ const adsenseClientId = import.meta.env.PUBLIC_ADSENSE_CLIENT_ID;
         crossorigin="anonymous"
       ></script>
     )}
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-12L0W84PLZ"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag("js", new Date());
+      gtag("config", "G-12L0W84PLZ");
+    </script>
   </head>
   <body class="bg-white text-neutral-900 antialiased">
     <Header lang={lang} />
