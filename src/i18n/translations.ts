@@ -13,7 +13,7 @@ export const ui = {
     "nav.reto": "Reto 4 semanas",
 
     "footer.tagline":
-      "Recursos gratuitos de coreano para hispanohablantes, creados con cariño por una coreana que también está aprendiendo español 💜.",
+      "Recursos gratuitos y programas guiados de coreano para hispanohablantes, creados con cariño por una coreana que también está aprendiendo español 💜.",
     "footer.explore": "Explora",
     "footer.follow": "Sígueme",
     "footer.rights": "Todos los derechos reservados.",
@@ -55,7 +55,7 @@ export const ui = {
     "nav.contenido": "콘텐츠",
     "nav.reto": "4주 챌린지",
 
-    "footer.tagline": "스페인어를 공부하는 한국인이 정성껏 만든, 스페인어권을 위한 무료 한국어 학습 자료 💜.",
+    "footer.tagline": "스페인어를 공부하는 한국인이 정성껏 만든, 스페인어권을 위한 무료 자료와 가이드 프로그램 💜.",
     "footer.explore": "메뉴",
     "footer.follow": "팔로우하기",
     "footer.rights": "All rights reserved.",
