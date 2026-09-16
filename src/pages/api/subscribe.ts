@@ -43,7 +43,9 @@ export const POST: APIRoute = async ({ request }) => {
   });
 
   if (!kitRes.ok) {
-    return json({ error: "No pudimos registrar tu correo. Inténtalo de nuevo." }, 502);
+    // TODO(debug): quitar "debug" de la respuesta una vez confirmado que Kit funciona.
+    const debug = await kitRes.text().catch(() => "");
+    return json({ error: "No pudimos registrar tu correo. Inténtalo de nuevo.", debug, status: kitRes.status }, 502);
   }
 
   return json({ ok: true }, 200);
