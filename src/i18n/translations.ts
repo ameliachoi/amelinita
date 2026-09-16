@@ -40,11 +40,6 @@ export const ui = {
     "modal.networkError": "Hubo un problema de conexión. Inténtalo de nuevo.",
     "modal.openButton": "Descargar PDF gratis 💜",
 
-    "newsletter.title": "Recibe nuevos recursos en tu correo 💌",
-    "newsletter.description": "Únete y te aviso cuando publique nuevos PDFs y videos para aprender coreano.",
-    "newsletter.submit": "Suscribirme ✨",
-    "newsletter.success": "¡Listo! Revisa tu correo para confirmar 💜.",
-
     "content.viewOn": "Ver en",
 
     "lang.switchTo": "한국어로 보기",
@@ -81,11 +76,6 @@ export const ui = {
     "modal.genericError": "등록에 실패했어요. 다시 시도해주세요.",
     "modal.networkError": "연결에 문제가 있어요. 다시 시도해주세요.",
     "modal.openButton": "PDF 무료 다운로드 💜",
-
-    "newsletter.title": "새 자료를 이메일로 받아보세요 💌",
-    "newsletter.description": "구독하시면 새 PDF와 영상이 올라올 때 알려드려요.",
-    "newsletter.submit": "구독하기 ✨",
-    "newsletter.success": "완료! 이메일을 확인해주세요 💜.",
 
     "content.viewOn": "에서 보기",
 
