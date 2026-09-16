@@ -1,0 +1,228 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CTAButton from "../components/CTAButton.astro";
+
+const description =
+  "Reto de 4 semanas con amelinita: practica coreano hablado todos los días y recibe feedback personalizado 1 a 1, basado en material certificado del Sejong Hakdang.";
+
+const checkoutHref = "https://paypal.me/amelinita/50usd";
+
+const courseJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Course",
+  name: "Suelta la Lengua: Reto de 4 Semanas",
+  description,
+  provider: {
+    "@type": "Person",
+    name: "Amelia Choi (amelinita)",
+    sameAs: "https://www.tiktok.com/@ameliachoi00",
+  },
+  offers: {
+    "@type": "Offer",
+    price: "50",
+    priceCurrency: "USD",
+    availability: "https://schema.org/LimitedAvailability",
+  },
+};
+---
+
+<BaseLayout
+  title="Suelta la Lengua: Reto de 4 Semanas"
+  description={description}
+  path="/suelta-la-lengua/"
+  jsonLd={courseJsonLd}
+>
+  <section class="bg-gradient-to-br from-brand-600 via-brand-700 to-brand-900 py-20 sm:py-28">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 text-center">
+      <span class="inline-block rounded-full bg-white/10 px-4 py-1 text-xs font-700 uppercase tracking-wide text-brand-100 ring-1 ring-white/20">
+        🗣️ Reto de 4 semanas
+      </span>
+      <h1 class="font-heading mt-5 text-3xl sm:text-5xl font-800 leading-tight text-white">
+        Suelta la Lengua: Reto de 4 Semanas con Amelinita
+      </h1>
+      <p class="mt-5 text-base sm:text-lg text-brand-100">
+        ¿Cómo estás estudiando coreano ahora mismo?
+      </p>
+      <p class="mt-2 text-brand-100">
+        ¿Bunpo? ¿Pingo? ¿Duolingo? Vocabulario todos los días, gramática, k-dramas con
+        subtítulos, canciones de tus grupos favoritos... Y aun así, cuando por fin tienes la
+        oportunidad de hablar con un coreano de verdad, algo pasa: la mente se queda en blanco y
+        la boca no se mueve.
+      </p>
+      <div class="mt-8">
+        <CTAButton href="#reservar">Reservar mi lugar 💜</CTAButton>
+      </div>
+    </div>
+  </section>
+
+  <article class="mx-auto max-w-3xl px-4 sm:px-6 py-14 sm:py-20">
+    <div class="prose-custom space-y-5 text-neutral-700 leading-relaxed">
+      <h2 class="font-heading text-2xl font-700 text-neutral-900">¿Te ha pasado esto? No es que hagas algo mal.</h2>
+      <p>
+        Llevas tres, cuatro meses estudiando coreano con dedicación. Y aun así, cuando intentas
+        hablar con un coreano, las palabras no salen. ¿Te suena familiar? No es que estés
+        haciendo algo mal — es que nadie te dijo la parte más importante.
+      </p>
+    </div>
+
+    <blockquote class="my-8 rounded-2xl bg-brand-50 p-6 sm:p-8 text-brand-800 ring-1 ring-brand-100">
+      <p class="font-heading text-lg sm:text-xl font-700 leading-snug">
+        Un idioma no se aprende sintiendo que ya sabes algo. Se aprende sintiendo el vacío — ese
+        momento incómodo en el que buscas una palabra y no la encuentras. Ese vacío es
+        exactamente donde ocurre el aprendizaje real. Y solo se llena de una forma: intentándolo,
+        una y otra vez, aunque salga mal.
+      </p>
+    </blockquote>
+
+    <div class="prose-custom space-y-5 text-neutral-700 leading-relaxed">
+      <p>
+        Escuchar clases no es suficiente. Memorizar vocabulario no es suficiente. Ha llegado el
+        momento de producir — de hablar, de equivocarte, de intentarlo de nuevo. Es hora de
+        aumentar tu output.
+      </p>
+
+      <h2 class="font-heading text-2xl font-700 text-neutral-900">¿Pero dónde se practica esto? ¿Con quién?</h2>
+      <p>
+        Ahí está el problema real: necesitas a alguien con quien practicar, alguien coreano que
+        te corrija de verdad. Pero busca por donde busques, los profesores de coreano que existen
+        en el mercado solo ofrecen clases por hora. Te enseñan gramática, te corrigen en el
+        momento... y ahí se acaba. No hay estructura pensada para que tú produzcas el idioma día
+        a día. El output se queda, otra vez, en tus manos — sola.
+      </p>
+      <p class="font-700 text-neutral-900">Por eso creé este reto.</p>
+      <p>
+        Busco a las personas que quieran ser parte de esta primera generación histórica. Durante
+        4 semanas, vamos a estudiar juntos usando material certificado del Sejong Hakdang — el
+        estándar oficial para aprender coreano.
+      </p>
+    </div>
+
+    <div class="mt-10">
+      <h2 class="font-heading text-2xl font-700 text-neutral-900">Así funciona</h2>
+      <div class="mt-5 space-y-4">
+        <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-neutral-100">
+          <p class="text-neutral-700 leading-relaxed">
+            <strong class="text-brand-700">De lunes a viernes</strong>, envías una tarea: notas
+            escritas + un audio hablando en coreano. En menos de 24 horas, recibes feedback
+            personalizado. 5 entregas en total.
+          </p>
+        </div>
+        <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-neutral-100">
+          <p class="text-neutral-700 leading-relaxed">
+            <strong class="text-brand-700">Además del material del libro</strong>, te comparto
+            expresiones y vocabulario reales que usan los coreanos hoy — cosas que no vas a
+            encontrar en ningún libro de texto.
+          </p>
+        </div>
+        <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-neutral-100">
+          <p class="text-neutral-700 leading-relaxed">
+            <strong class="text-brand-700">El fin de semana</strong>, junto los errores más
+            comunes de la semana y te preparo una tarea extra de repaso. Es opcional — pero si la
+            entregas, también recibes feedback.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 prose-custom space-y-5 text-neutral-700 leading-relaxed">
+      <h2 class="font-heading text-2xl font-700 text-neutral-900">¿Por qué funciona esto?</h2>
+      <p>No es casualidad — hay ciencia detrás de cada parte:</p>
+      <ul class="list-disc space-y-3 pl-5">
+        <li>
+          Escribir notas y grabar audios son dos formas distintas de producir el idioma. El audio
+          en especial te exige pronunciación, entonación y encontrar las palabras en tiempo real
+          — es más difícil que escribir, pero por eso mismo entrena mucho más fuerte.
+        </li>
+        <li>
+          Las expresiones reales que te comparto llenan justo el hueco que el libro no cubre —
+          ese pequeño salto entre lo que ya sabes y lo próximo que necesitas aprender.
+        </li>
+        <li>
+          Y el repaso del fin de semana no es al azar: volver a intentar lo que fallaste, unos
+          días después y no de inmediato, es lo que la ciencia confirma una y otra vez como la
+          forma más efectiva de que algo se quede en tu memoria a largo plazo.
+        </li>
+      </ul>
+    </div>
+
+    <div class="mt-10 grid gap-4 sm:grid-cols-2">
+      <div class="rounded-2xl bg-neutral-50 p-6 ring-1 ring-neutral-100">
+        <p class="text-xs font-700 uppercase tracking-wide text-neutral-400">Antes</p>
+        <p class="mt-2 text-sm text-neutral-600 leading-relaxed">
+          Expresiones de Instagram, TikTok, dramas, canciones... has aprendido tantas palabras,
+          pero cuando llega el momento de hablar, la boca no se mueve.
+        </p>
+      </div>
+      <div class="rounded-2xl bg-accent-100 p-6 ring-1 ring-accent-300">
+        <p class="text-xs font-700 uppercase tracking-wide text-accent-700">Después</p>
+        <p class="mt-2 text-sm text-neutral-700 leading-relaxed">
+          En 4 semanas, alcanzas un nivel A1-A2 de coreano. Puedes mantener una conversación
+          simple, explicar una situación, defenderte. Y sobre todo, ganas la confianza para
+          seguir aprendiendo coreano por tu cuenta.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-10 prose-custom space-y-5 text-neutral-700 leading-relaxed">
+      <h2 class="font-heading text-2xl font-700 text-neutral-900">Esto no termina en 4 semanas</h2>
+      <p>
+        Vas a formar parte de un grupo de WhatsApp con tus compañeros de esta generación — un
+        espacio para compartir recursos, dudas, avances. Una comunidad que sigue después del
+        reto.
+      </p>
+
+      <h2 class="font-heading text-2xl font-700 text-neutral-900">¿Te preocupa que sea la primera generación?</h2>
+      <p>
+        Lo entiendo. Pero no vas a encontrar en ningún otro lugar un feedback tan cercano, de una
+        coreana nativa, 1 a 1. Yo también viví esto — aprendiendo español sola, hablando en voz
+        alta conmigo misma, buscando desesperadamente amigos latinos con quienes practicar. Todo
+        lo que aprendí en ese proceso está en este reto. Vas a hablar coreano. Confía.
+      </p>
+    </div>
+
+    <div class="mt-10 rounded-2xl bg-white p-6 sm:p-8 shadow-sm ring-1 ring-neutral-100">
+      <h2 class="font-heading text-xl font-700 text-neutral-900">Antes de empezar — lo que necesitas saber</h2>
+      <div class="mt-5 space-y-5 text-sm text-neutral-600 leading-relaxed">
+        <div>
+          <p class="font-700 text-neutral-900">📖 Material de estudio</p>
+          <p class="mt-1">
+            Estudiarás con el libro Sejong Korean 1 o Sejong Korean 2 (tú eliges cuál según tu
+            nivel). Antes de comenzar el reto, necesitas descargar el PDF correspondiente — te
+            comparto el enlace al inscribirte.
+          </p>
+        </div>
+        <div class="rounded-xl bg-amber-50 p-4 ring-1 ring-amber-200">
+          <p class="font-700 text-amber-900">⚠️ Requisito importante: debes saber leer Hangul</p>
+          <p class="mt-1 text-amber-800">
+            Este reto está diseñado para quienes ya pueden leer coreano (Hangul). No es un curso
+            para aprender el alfabeto desde cero — es para dar el siguiente paso: producir el
+            idioma. Si todavía no sabes leer Hangul, este no es el momento indicado para ti
+            (¡pero puedes prepararte y unirte a la próxima generación!).
+          </p>
+        </div>
+        <div>
+          <p class="font-700 text-neutral-900">📱 Todo el feedback es por WhatsApp</p>
+          <p class="mt-1">
+            No hay plataformas complicadas ni apps nuevas que aprender. Envías tus tareas (notas
+            + audio) y recibes tu feedback personalizado directamente por WhatsApp — simple,
+            rápido y desde tu celular.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="reservar" class="mt-10 scroll-mt-24 rounded-2xl bg-gradient-to-br from-brand-600 to-brand-800 p-8 sm:p-10 text-center">
+      <p class="text-xs font-700 uppercase tracking-wide text-brand-200">Precio de lanzamiento</p>
+      <p class="mt-3 text-brand-200 line-through">Precio regular: $100 USD/mes</p>
+      <p class="font-heading text-4xl sm:text-5xl font-800 text-white">$50 USD</p>
+      <p class="mt-2 text-sm text-brand-100">
+        Como primera generación, 50% de descuento. Cupo limitado a 10 personas.
+      </p>
+      <div class="mt-6">
+        <CTAButton href={checkoutHref} target="_blank" class="!bg-white !text-brand-700 hover:!bg-brand-50 shadow-none">
+          Reservar mi lugar 💜
+        </CTAButton>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

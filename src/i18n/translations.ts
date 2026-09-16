@@ -10,6 +10,7 @@ export const ui = {
     "nav.sobreMi": "Sobre mí",
     "nav.pdf": "Recursos PDF",
     "nav.contenido": "Contenido",
+    "nav.reto": "Reto 4 semanas",
 
     "footer.tagline":
       "Recursos gratuitos de coreano para hispanohablantes, creados con cariño por una coreana que también está aprendiendo español 💜.",
@@ -52,6 +53,7 @@ export const ui = {
     "nav.sobreMi": "소개",
     "nav.pdf": "PDF 자료",
     "nav.contenido": "콘텐츠",
+    "nav.reto": "4주 챌린지",
 
     "footer.tagline": "스페인어를 공부하는 한국인이 정성껏 만든, 스페인어권을 위한 무료 한국어 학습 자료 💜.",
     "footer.explore": "메뉴",

@@ -1,0 +1,218 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CTAButton from "../../components/CTAButton.astro";
+
+const description =
+  "amelinita와 함께하는 4주 챌린지: 세종학당 공인 교재로 매일 한국어 말하기를 연습하고 1:1 맞춤 피드백을 받으세요.";
+
+const checkoutHref = "https://paypal.me/amelinita/50usd";
+
+const courseJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Course",
+  name: "Suelta la Lengua: 4주 챌린지",
+  description,
+  provider: {
+    "@type": "Person",
+    name: "Amelia Choi (amelinita)",
+    sameAs: "https://www.tiktok.com/@ameliachoi00",
+  },
+  offers: {
+    "@type": "Offer",
+    price: "50",
+    priceCurrency: "USD",
+    availability: "https://schema.org/LimitedAvailability",
+  },
+};
+---
+
+<BaseLayout
+  title="Suelta la Lengua: 4주 챌린지"
+  description={description}
+  path="/ko/suelta-la-lengua/"
+  jsonLd={courseJsonLd}
+  lang="ko"
+>
+  <section class="bg-gradient-to-br from-brand-600 via-brand-700 to-brand-900 py-20 sm:py-28">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 text-center">
+      <span class="inline-block rounded-full bg-white/10 px-4 py-1 text-xs font-700 uppercase tracking-wide text-brand-100 ring-1 ring-white/20">
+        🗣️ 4주 챌린지
+      </span>
+      <h1 class="font-heading mt-5 text-3xl sm:text-5xl font-800 leading-tight text-white">
+        Suelta la Lengua: amelinita와 함께하는 4주 챌린지
+      </h1>
+      <p class="mt-5 text-base sm:text-lg text-brand-100">
+        지금 어떻게 한국어를 공부하고 계신가요?
+      </p>
+      <p class="mt-2 text-brand-100">
+        Bunpo? Pingo? Duolingo? 매일 단어를 외우고, 문법을 공부하고, 자막을 켜고 K-드라마를
+        보고, 좋아하는 그룹의 노래를 듣고... 그런데도 막상 진짜 한국인과 대화할 기회가 오면
+        머릿속이 하얘지고 입이 떨어지지 않아요.
+      </p>
+      <div class="mt-8">
+        <CTAButton href="#reservar">자리 예약하기 💜</CTAButton>
+      </div>
+    </div>
+  </section>
+
+  <article class="mx-auto max-w-3xl px-4 sm:px-6 py-14 sm:py-20">
+    <div class="prose-custom space-y-5 text-neutral-700 leading-relaxed">
+      <h2 class="font-heading text-2xl font-700 text-neutral-900">이런 적 있으신가요? 당신이 뭘 잘못한 게 아니에요.</h2>
+      <p>
+        벌써 서너 달째 열심히 한국어를 공부하고 계시죠. 그런데도 막상 한국인과 대화하려고 하면
+        말이 안 나와요. 익숙한 느낌인가요? 뭔가 잘못하고 계신 게 아니라, 아무도 가장 중요한
+        부분을 알려주지 않았을 뿐이에요.
+      </p>
+    </div>
+
+    <blockquote class="my-8 rounded-2xl bg-brand-50 p-6 sm:p-8 text-brand-800 ring-1 ring-brand-100">
+      <p class="font-heading text-lg sm:text-xl font-700 leading-snug">
+        언어는 "이미 안다"는 느낌으로 배우는 게 아니에요. 그 공백 — 단어를 찾다가 결국 못 찾는
+        그 어색한 순간 — 을 느끼면서 배우는 거예요. 진짜 학습은 바로 그 공백에서 일어나요. 그리고
+        그 공백을 채우는 방법은 단 하나, 계속 시도하는 것뿐이에요, 틀리더라도요.
+      </p>
+    </blockquote>
+
+    <div class="prose-custom space-y-5 text-neutral-700 leading-relaxed">
+      <p>
+        강의를 듣는 것만으로는 부족해요. 단어를 외우는 것만으로도 부족해요. 이제는 산출(output)할
+        차례예요 — 말하고, 틀리고, 다시 시도하는 것. 이제 당신의 output을 늘려야 할 때예요.
+      </p>
+
+      <h2 class="font-heading text-2xl font-700 text-neutral-900">그런데 이걸 어디서, 누구와 연습하죠?</h2>
+      <p>
+        바로 여기에 진짜 문제가 있어요: 함께 연습할 사람, 진짜로 교정해줄 한국인이 필요해요.
+        하지만 아무리 찾아봐도 시중의 한국어 선생님들은 시간 단위 수업만 제공해요. 문법을
+        가르쳐주고, 그 순간에 교정해주고... 거기서 끝이에요. 매일매일 언어를 산출하도록 짜인
+        구조가 없어요. 결국 output은 다시 혼자만의 몫으로 남아요.
+      </p>
+      <p class="font-700 text-neutral-900">그래서 이 챌린지를 만들었어요.</p>
+      <p>
+        이 역사적인 첫 기수에 함께할 분들을 찾고 있어요. 4주 동안, 한국어 공식 표준 교재인
+        세종학당(Sejong Hakdang) 인증 교재로 함께 공부할 거예요.
+      </p>
+    </div>
+
+    <div class="mt-10">
+      <h2 class="font-heading text-2xl font-700 text-neutral-900">이렇게 진행돼요</h2>
+      <div class="mt-5 space-y-4">
+        <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-neutral-100">
+          <p class="text-neutral-700 leading-relaxed">
+            <strong class="text-brand-700">월요일부터 금요일까지</strong>, 필기 노트 + 한국어로
+            말하는 음성 과제를 제출해요. 24시간 이내에 맞춤 피드백을 받아요. 총 5회 제출이에요.
+          </p>
+        </div>
+        <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-neutral-100">
+          <p class="text-neutral-700 leading-relaxed">
+            <strong class="text-brand-700">교재 내용 외에도</strong>, 요즘 한국인들이 실제로
+            쓰는 표현과 단어를 알려드려요 — 어떤 교과서에서도 찾을 수 없는 것들이에요.
+          </p>
+        </div>
+        <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-neutral-100">
+          <p class="text-neutral-700 leading-relaxed">
+            <strong class="text-brand-700">주말에는</strong>, 한 주 동안 가장 많이 나온 실수들을
+            모아서 추가 복습 과제를 준비해드려요. 선택 사항이지만, 제출하시면 이것도 피드백을
+            받을 수 있어요.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 prose-custom space-y-5 text-neutral-700 leading-relaxed">
+      <h2 class="font-heading text-2xl font-700 text-neutral-900">왜 이 방법이 효과적일까요?</h2>
+      <p>우연이 아니에요 — 각 요소마다 과학적 근거가 있어요:</p>
+      <ul class="list-disc space-y-3 pl-5">
+        <li>
+          필기와 음성 녹음은 언어를 산출하는 서로 다른 두 가지 방식이에요. 특히 음성은 발음,
+          억양, 그리고 실시간으로 단어를 떠올리는 능력까지 요구해요 — 쓰기보다 어렵지만, 바로
+          그래서 훨씬 강하게 훈련이 돼요.
+        </li>
+        <li>
+          알려드리는 실제 표현들은 교재가 채워주지 못하는 바로 그 틈 — 이미 아는 것과 다음에
+          배워야 할 것 사이의 작은 도약 — 을 메워줘요.
+        </li>
+        <li>
+          주말 복습은 무작위가 아니에요: 틀렸던 것을 바로가 아니라 며칠 후에 다시 시도하는 것이
+          장기 기억에 가장 효과적인 방법이라는 건 과학적으로 반복 검증된 사실이에요.
+        </li>
+      </ul>
+    </div>
+
+    <div class="mt-10 grid gap-4 sm:grid-cols-2">
+      <div class="rounded-2xl bg-neutral-50 p-6 ring-1 ring-neutral-100">
+        <p class="text-xs font-700 uppercase tracking-wide text-neutral-400">시작 전</p>
+        <p class="mt-2 text-sm text-neutral-600 leading-relaxed">
+          인스타그램, 틱톡, 드라마, 노래 속 표현들... 정말 많은 단어를 배웠지만, 막상 말할
+          순간이 오면 입이 떨어지지 않아요.
+        </p>
+      </div>
+      <div class="rounded-2xl bg-accent-100 p-6 ring-1 ring-accent-300">
+        <p class="text-xs font-700 uppercase tracking-wide text-accent-700">4주 후</p>
+        <p class="mt-2 text-sm text-neutral-700 leading-relaxed">
+          4주 만에 한국어 A1-A2 수준에 도달해요. 간단한 대화를 이어가고, 상황을 설명하고, 스스로
+          표현할 수 있게 돼요. 그리고 무엇보다, 앞으로 혼자서도 한국어를 계속 공부할 수 있는
+          자신감을 얻어요.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-10 prose-custom space-y-5 text-neutral-700 leading-relaxed">
+      <h2 class="font-heading text-2xl font-700 text-neutral-900">4주로 끝나지 않아요</h2>
+      <p>
+        같은 기수 동료들과 함께하는 WhatsApp 그룹에 참여하게 돼요 — 자료와 궁금증, 진행 상황을
+        나누는 공간이에요. 챌린지가 끝난 뒤에도 이어지는 커뮤니티예요.
+      </p>
+
+      <h2 class="font-heading text-2xl font-700 text-neutral-900">첫 기수라서 걱정되시나요?</h2>
+      <p>
+        이해해요. 하지만 이만큼 가까운, 한국어 원어민의 1:1 맞춤 피드백은 어디에서도 찾기
+        어려울 거예요. 저도 똑같이 겪어봤어요 — 혼자 스페인어를 공부하며 혼잣말로 소리 내
+        연습하고, 함께 연습할 라틴계 친구를 절실하게 찾아다녔죠. 그 과정에서 배운 모든 걸 이
+        챌린지에 담았어요. 반드시 한국어로 말하게 되실 거예요. 믿으셔도 돼요.
+      </p>
+    </div>
+
+    <div class="mt-10 rounded-2xl bg-white p-6 sm:p-8 shadow-sm ring-1 ring-neutral-100">
+      <h2 class="font-heading text-xl font-700 text-neutral-900">시작 전에 알아두실 점</h2>
+      <div class="mt-5 space-y-5 text-sm text-neutral-600 leading-relaxed">
+        <div>
+          <p class="font-700 text-neutral-900">📖 학습 교재</p>
+          <p class="mt-1">
+            Sejong Korean 1 또는 Sejong Korean 2 교재로 공부해요 (본인 수준에 맞게 선택).
+            챌린지 시작 전에 해당 PDF를 다운로드해야 하며, 등록 시 링크를 안내해드려요.
+          </p>
+        </div>
+        <div class="rounded-xl bg-amber-50 p-4 ring-1 ring-amber-200">
+          <p class="font-700 text-amber-900">⚠️ 필수 조건: 한글을 읽을 수 있어야 해요</p>
+          <p class="mt-1 text-amber-800">
+            이 챌린지는 이미 한글을 읽을 수 있는 분들을 위한 과정이에요. 알파벳을 처음부터
+            배우는 강의가 아니라, 다음 단계 — 언어를 산출하는 단계 — 로 나아가기 위한 과정이에요.
+            아직 한글을 읽지 못하신다면 지금은 적절한 시기가 아니에요 (하지만 미리 준비해서
+            다음 기수에 함께해요!).
+          </p>
+        </div>
+        <div>
+          <p class="font-700 text-neutral-900">📱 모든 피드백은 WhatsApp으로</p>
+          <p class="mt-1">
+            복잡한 플랫폼이나 새로 배워야 할 앱이 없어요. 과제(노트 + 음성)를 보내면 WhatsApp으로
+            바로 맞춤 피드백을 받아요 — 휴대폰으로 간편하고 빠르게요.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="reservar" class="mt-10 scroll-mt-24 rounded-2xl bg-gradient-to-br from-brand-600 to-brand-800 p-8 sm:p-10 text-center">
+      <p class="text-xs font-700 uppercase tracking-wide text-brand-200">런칭 특별가</p>
+      <p class="mt-3 text-brand-200 line-through">정가: $100 USD/월</p>
+      <p class="font-heading text-4xl sm:text-5xl font-800 text-white">$50 USD</p>
+      <p class="mt-2 text-sm text-brand-100">
+        첫 기수 한정 50% 할인. 정원 10명 한정.
+      </p>
+      <div class="mt-6">
+        <CTAButton href={checkoutHref} target="_blank" class="!bg-white !text-brand-700 hover:!bg-brand-50 shadow-none">
+          자리 예약하기 💜
+        </CTAButton>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
