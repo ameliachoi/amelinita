@@ -38,6 +38,21 @@ export const pdfs: PdfResource[] = [
     },
   },
   {
+    slug: "50-verbos-coreanos-esenciales",
+    fileUrl: "",
+    directUrl: "https://drive.google.com/file/d/1KEShQGbsPJjer3M631ufG228-mQRYML2/view?usp=sharing",
+    es: {
+      title: "50 verbos coreanos esenciales",
+      description: "Workbook con los 50 verbos más usados en coreano, con significado y conjugación.",
+      tag: "Vocabulario",
+    },
+    ko: {
+      title: "필수 한국어 동사 50개",
+      description: "가장 많이 쓰이는 한국어 동사 50개의 의미와 활용형을 정리한 워크북.",
+      tag: "어휘",
+    },
+  },
+  {
     slug: "guia-hangul-en-1-dia",
     fileUrl: "",
     comingSoon: true,
