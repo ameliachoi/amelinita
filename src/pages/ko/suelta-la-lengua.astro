@@ -3,9 +3,9 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import CTAButton from "../../components/CTAButton.astro";
 
 const description =
-  "amelinita와 함께하는 4주 챌린지: 세종학당 공인 교재로 매일 한국어 말하기를 연습하고 1:1 맞춤 피드백을 받으세요.";
+  "amelinita와 함께하는 4주 챌린지: 세종학당 한국어 1을 하루 1과씩 완주하고, WhatsApp으로 매일 1:1 맞춤 피드백을 받으세요. 1기: 11월 2일~27일.";
 
-const checkoutHref = "https://paypal.me/amelinita/50usd";
+const applyHref = "https://forms.gle/QREvw3izBrKe4LUY8";
 
 const courseJsonLd = {
   "@context": "https://schema.org",
@@ -36,7 +36,7 @@ const courseJsonLd = {
   <section class="bg-gradient-to-br from-brand-600 via-brand-700 to-brand-900 py-20 sm:py-28">
     <div class="mx-auto max-w-3xl px-4 sm:px-6 text-center">
       <span class="inline-block rounded-full bg-white/10 px-4 py-1 text-xs font-700 uppercase tracking-wide text-brand-100 ring-1 ring-white/20">
-        🗣️ 4주 챌린지
+        🗣️ 1기 · 11월 2일~27일
       </span>
       <h1 class="font-heading mt-5 text-3xl sm:text-5xl font-800 leading-tight text-white">
         Suelta la Lengua: amelinita와 함께하는 4주 챌린지
@@ -50,7 +50,7 @@ const courseJsonLd = {
         머릿속이 하얘지고 입이 떨어지지 않아요.
       </p>
       <div class="mt-8">
-        <CTAButton href="#reservar">자리 예약하기 💜</CTAButton>
+        <CTAButton href="#inscribirme">신청하기 💜</CTAButton>
       </div>
     </div>
   </section>
@@ -88,8 +88,8 @@ const courseJsonLd = {
       </p>
       <p class="font-700 text-neutral-900">그래서 이 챌린지를 만들었어요.</p>
       <p>
-        이 역사적인 첫 기수에 함께할 분들을 찾고 있어요. 4주 동안, 한국어 공식 표준 교재인
-        세종학당(Sejong Hakdang) 인증 교재로 함께 공부할 거예요.
+        첫 기수에 함께할 분들을 찾고 있어요. 4주 동안 세종학당 공식 교재인
+        <strong>세종학당 한국어 1</strong>을 함께 완주해요: <strong>하루 1과, 총 20과.</strong>
       </p>
     </div>
 
@@ -98,8 +98,10 @@ const courseJsonLd = {
       <div class="mt-5 space-y-4">
         <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-neutral-100">
           <p class="text-neutral-700 leading-relaxed">
-            <strong class="text-brand-700">월요일부터 금요일까지</strong>, 필기 노트 + 한국어로
-            말하는 음성 과제를 제출해요. 24시간 이내에 맞춤 피드백을 받아요. 총 5회 제출이에요.
+            <strong class="text-brand-700">월~금 매일 아침</strong> WhatsApp으로 그날의 과와
+            숙제를 받아요. <strong class="text-brand-700">멕시코시티 기준 밤 10시까지</strong> 그날 문법으로
+            쓴 문장 3개(텍스트) + 대화문을 읽은 음성 메시지를 제출하면,
+            <strong class="text-brand-700">다음 날 아침</strong> 1:1 맞춤 피드백이 도착해요. 총 20회 제출, 20번의 교정이에요.
           </p>
         </div>
         <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-neutral-100">
@@ -110,9 +112,8 @@ const courseJsonLd = {
         </div>
         <div class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-neutral-100">
           <p class="text-neutral-700 leading-relaxed">
-            <strong class="text-brand-700">주말에는</strong>, 한 주 동안 가장 많이 나온 실수들을
-            모아서 추가 복습 과제를 준비해드려요. 선택 사항이지만, 제출하시면 이것도 피드백을
-            받을 수 있어요.
+            <strong class="text-brand-700">주말에는</strong> 교재의 종합 문제와 그 주에 자주 나온
+            실수로 복습해요. 선택 사항이고, 교재 뒤의 정답으로 직접 확인할 수 있어요.
           </p>
         </div>
       </div>
@@ -149,18 +150,18 @@ const courseJsonLd = {
       <div class="rounded-2xl bg-accent-100 p-6 ring-1 ring-accent-300">
         <p class="text-xs font-700 uppercase tracking-wide text-accent-700">4주 후</p>
         <p class="mt-2 text-sm text-neutral-700 leading-relaxed">
-          4주 만에 한국어 A1-A2 수준에 도달해요. 간단한 대화를 이어가고, 상황을 설명하고, 스스로
-          표현할 수 있게 돼요. 그리고 무엇보다, 앞으로 혼자서도 한국어를 계속 공부할 수 있는
+          4주 만에 세종학당 초급 1 과정을 완주해요. 자기소개, 하루 일과, 약속 잡기, 음식 주문,
+          길 묻기를 할 수 있게 돼요. 그리고 무엇보다, 말하기에 대한 두려움을 버리고 계속 공부할
           자신감을 얻어요.
         </p>
       </div>
     </div>
 
     <div class="mt-10 prose-custom space-y-5 text-neutral-700 leading-relaxed">
-      <h2 class="font-heading text-2xl font-700 text-neutral-900">4주로 끝나지 않아요</h2>
+      <h2 class="font-heading text-2xl font-700 text-neutral-900">혼자가 아니에요</h2>
       <p>
-        같은 기수 동료들과 함께하는 WhatsApp 그룹에 참여하게 돼요 — 자료와 궁금증, 진행 상황을
-        나누는 공간이에요. 챌린지가 끝난 뒤에도 이어지는 커뮤니티예요.
+        1기 WhatsApp 그룹에 참여해서 매일 과 공지와 4주 동안 리듬을 유지할 수 있도록 돕는
+        메시지를 받아요.
       </p>
 
       <h2 class="font-heading text-2xl font-700 text-neutral-900">첫 기수라서 걱정되시나요?</h2>
@@ -176,10 +177,18 @@ const courseJsonLd = {
       <h2 class="font-heading text-xl font-700 text-neutral-900">시작 전에 알아두실 점</h2>
       <div class="mt-5 space-y-5 text-sm text-neutral-600 leading-relaxed">
         <div>
+          <p class="font-700 text-neutral-900">📅 일정</p>
+          <ul class="mt-1 space-y-1">
+            <li>신청: 10월 15일~29일</li>
+            <li>시작: 11월 2일 (월)</li>
+            <li>종료: 11월 27일 (금)</li>
+          </ul>
+        </div>
+        <div>
           <p class="font-700 text-neutral-900">📖 학습 교재</p>
           <p class="mt-1">
-            Sejong Korean 1 또는 Sejong Korean 2 교재로 공부해요 (본인 수준에 맞게 선택).
-            챌린지 시작 전에 해당 PDF를 다운로드해야 하며, 등록 시 링크를 안내해드려요.
+            세종학당 한국어 1 (스페인어판)으로 공부해요. 무료이고, 신청 후 다운로드 링크를
+            안내해드려요.
           </p>
         </div>
         <div class="rounded-xl bg-amber-50 p-4 ring-1 ring-amber-200">
@@ -194,25 +203,36 @@ const courseJsonLd = {
         <div>
           <p class="font-700 text-neutral-900">📱 모든 피드백은 WhatsApp으로</p>
           <p class="mt-1">
-            복잡한 플랫폼이나 새로 배워야 할 앱이 없어요. 과제(노트 + 음성)를 보내면 WhatsApp으로
+            복잡한 플랫폼이나 새로 배워야 할 앱이 없어요. 과제(문장 + 음성)를 보내면 WhatsApp으로
             바로 맞춤 피드백을 받아요 — 휴대폰으로 간편하고 빠르게요.
           </p>
+        </div>
+        <div>
+          <p class="font-700 text-neutral-900">📝 신청 방법</p>
+          <ol class="mt-1 list-decimal space-y-1 pl-5">
+            <li>신청 폼 작성 (2분)</li>
+            <li>24시간 안에 WhatsApp으로 결제 링크 발송</li>
+            <li>결제 완료 순으로 자리 확정</li>
+          </ol>
         </div>
       </div>
     </div>
 
-    <div id="reservar" class="mt-10 scroll-mt-24 rounded-2xl bg-gradient-to-br from-brand-600 to-brand-800 p-8 sm:p-10 text-center">
+    <div id="inscribirme" class="mt-10 scroll-mt-24 rounded-2xl bg-gradient-to-br from-brand-600 to-brand-800 p-8 sm:p-10 text-center">
       <p class="text-xs font-700 uppercase tracking-wide text-brand-200">런칭 특별가</p>
-      <p class="mt-3 text-brand-200 line-through">정가: $100 USD/월</p>
+      <p class="mt-3 text-brand-200 line-through">정가: $100 USD</p>
       <p class="font-heading text-4xl sm:text-5xl font-800 text-white">$50 USD</p>
       <p class="mt-2 text-sm text-brand-100">
         첫 기수 한정 50% 할인. 정원 10명 한정.
       </p>
       <div class="mt-6">
-        <CTAButton href={checkoutHref} target="_blank" class="!bg-white !text-brand-700 hover:!bg-brand-50 shadow-none">
-          자리 예약하기 💜
+        <CTAButton href={applyHref} target="_blank" class="!bg-white !text-brand-700 hover:!bg-brand-50 shadow-none">
+          신청하기 💜
         </CTAButton>
       </div>
+      <p class="mt-4 text-xs text-brand-200">
+        10월 29일까지 또는 10명이 모두 찰 때까지 신청을 받아요.
+      </p>
     </div>
   </article>
 </BaseLayout>
