@@ -9,37 +9,76 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 const prefix = lang === "ko" ? "/ko" : "";
 
-const navLinks = [
+type NavLink = { href: string; label: string };
+type NavGroup = { label: string; children: NavLink[] };
+
+const navItems: (NavLink | NavGroup)[] = [
   { href: `${prefix}/sobre-mi/`, label: t("nav.sobreMi") },
   { href: `${prefix}/recursos-pdf/`, label: t("nav.pdf") },
+  {
+    label: t("nav.recursos"),
+    children: [{ href: `${prefix}/suelta-la-lengua/`, label: t("nav.reto") }],
+  },
   { href: `${prefix}/contenido/`, label: t("nav.contenido") },
-  // "Suelta la Lengua" (nav.reto) está oculto en src/pages/_drafts/ hasta el lanzamiento.
 ];
 
 const currentPath = Astro.url.pathname;
+const isGroupActive = (group: NavGroup) => group.children.some((c) => c.href === currentPath);
 ---
 
 <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-neutral-100">
   <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <input type="checkbox" id="nav-toggle" class="peer hidden" />
     <div class="flex h-16 items-center justify-between">
       <a href={lang === "ko" ? "/ko/" : "/"} class="font-heading text-xl font-800 uppercase tracking-tight text-brand-700">
         amelinita
       </a>
 
-      <input type="checkbox" id="nav-toggle" class="peer hidden" />
-
       <nav class="hidden md:flex items-center gap-8" aria-label="Navegación principal">
-        {navLinks.map((link) => (
-          <a
-            href={link.href}
-            class:list={[
-              "text-sm font-medium transition-colors hover:text-brand-600",
-              currentPath === link.href ? "text-brand-700" : "text-neutral-600",
-            ]}
-          >
-            {link.label}
-          </a>
-        ))}
+        {navItems.map((item) =>
+          "children" in item ? (
+            <div class="group relative">
+              <button
+                type="button"
+                aria-haspopup="true"
+                class:list={[
+                  "inline-flex items-center gap-1 text-sm font-medium transition-colors hover:text-brand-600 cursor-pointer",
+                  isGroupActive(item) ? "text-brand-700" : "text-neutral-600",
+                ]}
+              >
+                {item.label}
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="transition-transform group-hover:rotate-180 group-focus-within:rotate-180">
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 transition-opacity absolute left-1/2 -translate-x-1/2 top-full pt-3">
+                <div class="min-w-48 rounded-xl bg-white p-2 shadow-lg ring-1 ring-neutral-100">
+                  {item.children.map((child) => (
+                    <a
+                      href={child.href}
+                      class:list={[
+                        "block whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium",
+                        currentPath === child.href ? "bg-brand-50 text-brand-700" : "text-neutral-600 hover:bg-neutral-50 hover:text-brand-600",
+                      ]}
+                    >
+                      {child.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <a
+              href={item.href}
+              class:list={[
+                "text-sm font-medium transition-colors hover:text-brand-600",
+                currentPath === item.href ? "text-brand-700" : "text-neutral-600",
+              ]}
+            >
+              {item.label}
+            </a>
+          )
+        )}
       </nav>
 
       <label
@@ -57,17 +96,34 @@ const currentPath = Astro.url.pathname;
       class="md:hidden hidden peer-checked:flex flex-col gap-1 pb-4"
       aria-label="Navegación móvil"
     >
-      {navLinks.map((link) => (
-        <a
-          href={link.href}
-          class:list={[
-            "rounded-lg px-3 py-2 text-sm font-medium",
-            currentPath === link.href ? "bg-brand-50 text-brand-700" : "text-neutral-600 hover:bg-neutral-50",
-          ]}
-        >
-          {link.label}
-        </a>
-      ))}
+      {navItems.map((item) =>
+        "children" in item ? (
+          <div>
+            <p class="px-3 pt-2 pb-1 text-xs font-700 uppercase tracking-wide text-neutral-400">{item.label}</p>
+            {item.children.map((child) => (
+              <a
+                href={child.href}
+                class:list={[
+                  "block rounded-lg pl-6 pr-3 py-2 text-sm font-medium",
+                  currentPath === child.href ? "bg-brand-50 text-brand-700" : "text-neutral-600 hover:bg-neutral-50",
+                ]}
+              >
+                {child.label}
+              </a>
+            ))}
+          </div>
+        ) : (
+          <a
+            href={item.href}
+            class:list={[
+              "rounded-lg px-3 py-2 text-sm font-medium",
+              currentPath === item.href ? "bg-brand-50 text-brand-700" : "text-neutral-600 hover:bg-neutral-50",
+            ]}
+          >
+            {item.label}
+          </a>
+        )
+      )}
     </nav>
   </div>
 </header>

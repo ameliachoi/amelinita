@@ -8,9 +8,10 @@ export const languages: Record<Lang, string> = {
 export const ui = {
   es: {
     "nav.sobreMi": "Sobre mí",
-    "nav.pdf": "Recursos PDF",
+    "nav.pdf": "Gratis PDF",
+    "nav.recursos": "Recursos",
     "nav.contenido": "Contenido",
-    "nav.reto": "Reto 4 semanas",
+    "nav.reto": "Suelta la Lengua",
 
     "footer.tagline":
       "Recursos gratuitos y programas guiados de coreano para hispanohablantes, creados con cariño por una coreana que también está aprendiendo español 💜.",
@@ -46,9 +47,10 @@ export const ui = {
   },
   ko: {
     "nav.sobreMi": "소개",
-    "nav.pdf": "PDF 자료",
+    "nav.pdf": "무료 PDF",
+    "nav.recursos": "자료",
     "nav.contenido": "콘텐츠",
-    "nav.reto": "4주 챌린지",
+    "nav.reto": "Suelta la Lengua",
 
     "footer.tagline": "스페인어를 공부하는 한국인이 정성껏 만든, 스페인어권을 위한 무료 자료와 가이드 프로그램 💜.",
     "footer.explore": "메뉴",
