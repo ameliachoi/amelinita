@@ -8,7 +8,7 @@ export const languages: Record<Lang, string> = {
 export const ui = {
   es: {
     "nav.sobreMi": "Sobre mí",
-    "nav.pdf": "Gratis PDF",
+    "nav.pdf": "PDF gratis",
     "nav.recursos": "Recursos",
     "nav.contenido": "Contenido",
     "nav.reto": "Suelta la Lengua",
