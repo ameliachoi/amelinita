@@ -10,7 +10,7 @@ export const ui = {
     "nav.sobreMi": "Sobre mí",
     "nav.pdf": "PDF gratis",
     "nav.recursos": "Recursos",
-    "nav.contenido": "Contenido",
+    "nav.blog": "Blog",
     "nav.reto": "Suelta la Lengua",
 
     "footer.tagline":
@@ -49,7 +49,7 @@ export const ui = {
     "nav.sobreMi": "소개",
     "nav.pdf": "무료 PDF",
     "nav.recursos": "자료",
-    "nav.contenido": "콘텐츠",
+    "nav.blog": "블로그",
     "nav.reto": "Suelta la Lengua",
 
     "footer.tagline": "스페인어를 공부하는 한국인이 정성껏 만든, 스페인어권을 위한 무료 자료와 가이드 프로그램 💜.",

@@ -4,11 +4,13 @@ import { getAlternateLangPath, useTranslations, type Lang } from "../i18n/transl
 interface Props {
   lang: Lang;
   currentPath: string;
+  // Destino explícito, para páginas que no tienen versión en el otro idioma.
+  href?: string;
 }
 
-const { lang, currentPath } = Astro.props;
+const { lang, currentPath, href } = Astro.props;
 const t = useTranslations(lang);
-const altPath = getAlternateLangPath(currentPath, lang);
+const altPath = href ?? getAlternateLangPath(currentPath, lang);
 ---
 
 <a

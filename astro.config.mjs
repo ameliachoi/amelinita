@@ -22,6 +22,11 @@ export default defineConfig({
     },
   },
 
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      // /contenido/ ahora solo redirige al blog.
+      filter: (page) => !/\/contenido\/$/.test(page),
+    }),
+  ],
   adapter: vercel()
 });

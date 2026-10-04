@@ -1,0 +1,87 @@
+---
+import { render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AdSlot from "../../components/AdSlot.astro";
+import BlogPostCard from "../../components/BlogPostCard.astro";
+import CTAButton from "../../components/CTAButton.astro";
+import { formatPostDate, getPublishedPosts, readingMinutes } from "../../data/blog";
+
+export async function getStaticPaths() {
+  const posts = await getPublishedPosts();
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post, related: posts.filter((p) => p.id !== post.id).slice(0, 2) },
+  }));
+}
+
+const { post, related } = Astro.props;
+const { Content } = await render(post);
+const path = `/blog/${post.id}/`;
+
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.pubDate.toISOString(),
+  inLanguage: "es",
+  mainEntityOfPage: new URL(path, Astro.site).toString(),
+  author: {
+    "@type": "Person",
+    name: "Amelia Choi (amelinita)",
+    url: new URL("/sobre-mi/", Astro.site).toString(),
+  },
+};
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  path={path}
+  jsonLd={articleJsonLd}
+  ogType="article"
+  untranslatedFallback="/ko/blog/"
+>
+  <article class="mx-auto max-w-2xl px-4 sm:px-6 py-14 sm:py-20">
+    <a href="/blog/" class="text-sm font-600 text-brand-600 hover:text-brand-700">← Todas las entradas</a>
+
+    <header class="mt-6">
+      <span class="inline-block rounded-full bg-accent-100 px-3 py-1 text-xs font-700 text-accent-700">
+        {post.data.tag}
+      </span>
+      <h1 class="font-heading mt-4 text-3xl sm:text-4xl font-800 leading-tight text-neutral-900">
+        {post.data.title}
+      </h1>
+      <p class="mt-4 text-sm text-neutral-500">
+        Por <a href="/sobre-mi/" class="font-600 text-brand-700 hover:underline">amelinita</a>
+        · <time datetime={post.data.pubDate.toISOString()}>{formatPostDate(post.data.pubDate, "es")}</time>
+        · {readingMinutes(post.body)} min de lectura
+      </p>
+    </header>
+
+    <div class="blog-prose mt-10">
+      <Content />
+    </div>
+
+    <AdSlot position="mid-content" sizeLabel="300x250" />
+
+    <div class="mt-10 rounded-2xl bg-brand-50 p-8 text-center ring-1 ring-brand-100">
+      <h2 class="font-heading text-xl font-700 text-brand-800">¿Quieres seguir aprendiendo conmigo? 🌸</h2>
+      <p class="mt-2 text-sm text-brand-700/80">Descarga mis PDFs gratuitos para estudiar coreano en español.</p>
+      <div class="mt-5">
+        <CTAButton href="/recursos-pdf/">Ver PDFs gratis 📚</CTAButton>
+      </div>
+    </div>
+  </article>
+
+  {related.length > 0 && (
+    <section class="bg-neutral-50 py-14">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6">
+        <h2 class="font-heading text-2xl font-700 text-neutral-900">Sigue leyendo</h2>
+        <div class="mt-6 grid gap-6 md:grid-cols-2">
+          {related.map((p) => <BlogPostCard post={p} />)}
+        </div>
+      </div>
+    </section>
+  )}
+</BaseLayout>

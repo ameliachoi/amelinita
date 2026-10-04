@@ -19,7 +19,7 @@ const navItems: (NavLink | NavGroup)[] = [
     label: t("nav.recursos"),
     children: [{ href: `${prefix}/suelta-la-lengua/`, label: t("nav.reto") }],
   },
-  { href: `${prefix}/contenido/`, label: t("nav.contenido") },
+  { href: `${prefix}/blog/`, label: t("nav.blog") },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -72,7 +72,7 @@ const isGroupActive = (group: NavGroup) => group.children.some((c) => c.href ===
               href={item.href}
               class:list={[
                 "text-sm font-medium transition-colors hover:text-brand-600",
-                currentPath === item.href ? "text-brand-700" : "text-neutral-600",
+                currentPath.startsWith(item.href) ? "text-brand-700" : "text-neutral-600",
               ]}
             >
               {item.label}
@@ -117,7 +117,7 @@ const isGroupActive = (group: NavGroup) => group.children.some((c) => c.href ===
             href={item.href}
             class:list={[
               "rounded-lg px-3 py-2 text-sm font-medium",
-              currentPath === item.href ? "bg-brand-50 text-brand-700" : "text-neutral-600 hover:bg-neutral-50",
+              currentPath.startsWith(item.href) ? "bg-brand-50 text-brand-700" : "text-neutral-600 hover:bg-neutral-50",
             ]}
           >
             {item.label}

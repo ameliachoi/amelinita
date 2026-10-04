@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import AdSlot from "../../../components/AdSlot.astro";
+import BlogPostCard from "../../../components/BlogPostCard.astro";
+import SocialFollow from "../../../components/SocialFollow.astro";
+import { getPublishedPosts } from "../../../data/blog";
+
+const posts = await getPublishedPosts();
+
+const description =
+  "amelinita 블로그: 한국 문화, 스페인어권을 위한 한국어, 그리고 스페인어를 배우는 한국인의 이야기.";
+---
+
+<BaseLayout title="블로그" description={description} path="/ko/blog/" lang="ko">
+  <section class="bg-neutral-50 py-16 sm:py-20">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 text-center">
+      <span class="inline-block rounded-full bg-accent-100 px-4 py-1 text-xs font-700 uppercase tracking-wide text-accent-700">
+        Blog
+      </span>
+      <h1 class="font-heading mt-4 text-3xl sm:text-4xl font-800 text-neutral-900">
+        Coreanita está pensando... ✍️
+      </h1>
+      <p class="mt-4 text-neutral-600">
+        한국 문화, 한국어, 그리고 배워가는 이야기를 나눠요. 글은 스페인어로 작성돼요.
+      </p>
+    </div>
+  </section>
+
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <AdSlot position="post-intro" sizeLabel="728x90 / responsive" lang="ko" />
+
+    <div class="grid gap-6 py-8 md:grid-cols-2 lg:grid-cols-3">
+      {posts.map((post) => <BlogPostCard post={post} lang="ko" />)}
+    </div>
+
+    <div class="py-8">
+      <SocialFollow
+        title="팔로우하기 🎧"
+        description="매일 조금씩 한국어를 연습할 수 있는 짧은 콘텐츠예요."
+      />
+    </div>
+
+    <AdSlot position="pre-footer" sizeLabel="728x90 / responsive" lang="ko" />
+  </div>
+</BaseLayout>

@@ -13,6 +13,11 @@ interface Props {
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   noindex?: boolean;
   lang?: Lang;
+  // Página sin traducción (p.ej. entradas del blog, solo en español): no se emiten
+  // hreflang y el botón de idioma lleva a esta ruta en su lugar.
+  untranslatedFallback?: string;
+  // "article" para entradas del blog.
+  ogType?: "website" | "article";
 }
 
 const {
@@ -25,6 +30,8 @@ const {
   jsonLd,
   noindex = false,
   lang = "es",
+  untranslatedFallback,
+  ogType = "website",
 } = Astro.props;
 
 const canonicalURL = new URL(path, Astro.site);
@@ -53,16 +60,20 @@ const jsonLdBlocks = [websiteJsonLd, ...(jsonLd ? (Array.isArray(jsonLd) ? jsonL
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonicalURL} />
-    <link rel="alternate" hreflang={lang === "es" ? "es-419" : "ko"} href={canonicalURL} />
-    <link rel="alternate" hreflang={lang === "es" ? "ko" : "es-419"} href={alternateURL} />
-    <link rel="alternate" hreflang="x-default" href={lang === "es" ? canonicalURL : alternateURL} />
+    {!untranslatedFallback && (
+      <>
+        <link rel="alternate" hreflang={lang === "es" ? "es-419" : "ko"} href={canonicalURL} />
+        <link rel="alternate" hreflang={lang === "es" ? "ko" : "es-419"} href={alternateURL} />
+        <link rel="alternate" hreflang="x-default" href={lang === "es" ? canonicalURL : alternateURL} />
+      </>
+    )}
 
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={siteName} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
@@ -101,6 +112,6 @@ const jsonLdBlocks = [websiteJsonLd, ...(jsonLd ? (Array.isArray(jsonLd) ? jsonL
       <slot />
     </main>
     <Footer lang={lang} />
-    <LanguageSwitcher lang={lang} currentPath={path} />
+    <LanguageSwitcher lang={lang} currentPath={path} href={untranslatedFallback} />
   </body>
 </html>
