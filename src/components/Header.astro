@@ -19,7 +19,8 @@ const navItems: (NavLink | NavGroup)[] = [
     label: t("nav.recursos"),
     children: [{ href: `${prefix}/suelta-la-lengua/`, label: t("nav.reto") }],
   },
-  { href: `${prefix}/blog/`, label: t("nav.blog") },
+  // Blog oculto por ahora.
+  // { href: `${prefix}/blog/`, label: t("nav.blog") },
 ];
 
 const currentPath = Astro.url.pathname;
