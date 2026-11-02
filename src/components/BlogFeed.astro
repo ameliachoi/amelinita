@@ -1,0 +1,39 @@
+---
+import { render } from "astro:content";
+import AdSlot from "./AdSlot.astro";
+import { formatPostDate, readingMinutes, type BlogPost } from "../data/blog";
+import type { Lang } from "../i18n/translations";
+
+interface Props {
+  posts: BlogPost[];
+  lang?: Lang;
+}
+
+// Muestra las entradas completas una tras otra (la más reciente primero).
+const { posts, lang = "es" } = Astro.props;
+const minutesLabel = lang === "ko" ? "분 분량" : "min de lectura";
+const rendered = await Promise.all(
+  posts.map(async (post) => ({ post, Content: (await render(post)).Content })),
+);
+---
+
+<div class="divide-y divide-neutral-100">
+  {rendered.map(({ post, Content }, i) => (
+    <article class="py-12 first:pt-0">
+      <span class="inline-block rounded-full bg-accent-100 px-3 py-1 text-xs font-700 text-accent-700">
+        {post.data.tag}
+      </span>
+      <h2 class="font-heading mt-4 text-2xl sm:text-3xl font-800 leading-tight text-neutral-900">
+        <a href={`/blog/${post.id}/`} class="hover:text-brand-700 transition-colors">{post.data.title}</a>
+      </h2>
+      <p class="mt-3 text-sm text-neutral-500">
+        <time datetime={post.data.pubDate.toISOString()}>{formatPostDate(post.data.pubDate, lang)}</time>
+        · {readingMinutes(post.body)} {minutesLabel}
+      </p>
+      <div class="blog-prose mt-8">
+        <Content />
+      </div>
+      {i < rendered.length - 1 && <AdSlot position="mid-content" sizeLabel="728x90 / responsive" lang={lang} />}
+    </article>
+  ))}
+</div>
